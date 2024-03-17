@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-class Admin_home_user extends StatefulWidget {
-  const Admin_home_user({super.key});
+class MECH_SERVICE_HOME extends StatefulWidget {
+  const MECH_SERVICE_HOME({super.key});
 
   @override
-  State<Admin_home_user> createState() => _Admin_home_userState();
+  State<MECH_SERVICE_HOME> createState() => _MECH_SERVICE_HOMEState();
 }
 
-class _Admin_home_userState extends State<Admin_home_user> {
+class _MECH_SERVICE_HOMEState extends State<MECH_SERVICE_HOME> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +16,7 @@ class _Admin_home_userState extends State<Admin_home_user> {
             children: [
 
               Container(
-                height: 900,
+                height: 850,
                 width: 470,
                 child: ListView.separated(
                     separatorBuilder: (context,index)=>Divider(
@@ -26,7 +26,7 @@ class _Admin_home_userState extends State<Admin_home_user> {
                       thickness: 20,
                       height: 50,
                     ),
-                    itemCount: 10,
+                    itemCount: 3,
                     itemBuilder: (BuildContext context,int index){
                       return
                         Container(
@@ -45,7 +45,12 @@ class _Admin_home_userState extends State<Admin_home_user> {
                               SizedBox(
                                   height:50,
                                   width: 50,
-                                  child: Image.asset("assets/images/men.png")),
+                                  child: Column(
+                                    children: [
+                                      Image.asset("assets/images/men.png"),
+                                      Text("Name",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),)
+                                    ],
+                                  )),
                               SizedBox(
                                 width: 20,
                               ),
@@ -53,10 +58,10 @@ class _Admin_home_userState extends State<Admin_home_user> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Name",style: TextStyle(fontWeight: FontWeight.bold),),
-                                  Text("Location",),
-                                  Text("Mobile number"),
-                                  Text("Email"),
+                                  Text("Complaint",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  Text("Date",),
+                                  Text("Time"),
+                                  Text("Place"),
                                 ],
                               )
                             ],

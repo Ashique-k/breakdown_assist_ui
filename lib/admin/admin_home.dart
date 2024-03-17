@@ -43,8 +43,8 @@ class _Admin_homeState extends State<Admin_home> {
               label: "notification",
               icon: Icon(Icons.notification_add))
         ],
-            iconSize: 30,
-            // showSelectedLabels: false,
+            iconSize: 25,
+
 
 
             currentIndex: _indexNum,

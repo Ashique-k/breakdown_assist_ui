@@ -1,4 +1,5 @@
 import 'package:breakdown_assist/admin/admin_sign.dart';
+import 'package:breakdown_assist/mechanic/mech_login.dart';
 import 'package:flutter/material.dart';
 class ADMIN_LOGIN extends StatefulWidget {
   const ADMIN_LOGIN({super.key});
@@ -39,6 +40,11 @@ class _ADMIN_LOGINState extends State<ADMIN_LOGIN> {
                 height: 50,
                 width: 300,
                 child: ElevatedButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MECH_LOGIN()),
+                  );
+
 
                 }, child: Text("Mechanic",style: TextStyle(fontSize: 18,color: Colors.blue),),
                 style: ElevatedButton.styleFrom(
