@@ -5,6 +5,8 @@ import 'package:breakdown_assist/mechanic/mech_service_page.dart';
 import 'package:breakdown_assist/mechanic/mech_tab.dart';
 import 'package:flutter/material.dart';
 
+import 'notification_mech.dart';
+
 
 
 
@@ -20,7 +22,7 @@ class _MECH_HOMEState extends State<MECH_HOME> {
   List tabs = [
     MECH_TAB(),
     Service_page(),
-    Rating_Mech(),
+    MECH_RATING(),
 
 
   ];
@@ -46,7 +48,14 @@ class _MECH_HOMEState extends State<MECH_HOME> {
             ),
           ),
           actions: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.notification_add_outlined))
+            IconButton(onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Nofification_Mech()),
+              );
+
+
+            }, icon: Icon(Icons.notification_add_outlined))
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(items: [

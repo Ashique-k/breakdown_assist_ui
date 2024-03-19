@@ -43,12 +43,17 @@ class _MECH_SERVICE_HOMEState extends State<MECH_SERVICE_HOME> {
 
                             children: [
                               SizedBox(
-                                  height:50,
-                                  width: 50,
+                                  height:70,
+                                  width: 70,
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      Image.asset("assets/images/men.png"),
-                                      Text("Name",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),)
+                                      CircleAvatar(
+                                        backgroundImage: AssetImage("assets/images/men.png"),
+                                        radius: 20,
+                                      ),
+                                      Text("Name",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.black),)
                                     ],
                                   )),
                               SizedBox(
@@ -62,6 +67,14 @@ class _MECH_SERVICE_HOMEState extends State<MECH_SERVICE_HOME> {
                                   Text("Date",),
                                   Text("Time"),
                                   Text("Place"),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(left: 20),
+                                  //   child: ElevatedButton(onPressed: (){}, child: Text("Payment Sucessfull"),
+                                  //   style: ElevatedButton.styleFrom(
+                                  //     backgroundColor: Colors.green
+                                  //   ),
+                                  //   ),
+                                  // ),
                                 ],
                               )
                             ],

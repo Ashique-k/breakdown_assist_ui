@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-class Mechanic_request extends StatefulWidget {
-  const Mechanic_request({super.key});
+
+class USER_REQUEST extends StatefulWidget {
+  const USER_REQUEST({super.key});
 
   @override
-  State<Mechanic_request> createState() => _Mechanic_requestState();
+  State<USER_REQUEST> createState() => _USER_REQUESTState();
 }
 
-class _Mechanic_requestState extends State<Mechanic_request> {
+class _USER_REQUESTState extends State<USER_REQUEST> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   actions: [
-      //     Icon(Icons.notification_add),
-      //   ],
-      // ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -49,27 +45,27 @@ class _Mechanic_requestState extends State<Mechanic_request> {
                                   width: 70,
                                   child: Column(
                                     children: [
-                                      CircleAvatar(
-                                        backgroundImage: AssetImage("assets/images/men.png"),
-
-
-                                      ),
-                                      Text("name"),
+                                      // CircleAvatar(
+                                      //   backgroundImage: AssetImage("assets/images/men.png"),
+                                      //
+                                      //
+                                      // ),
+                                      // Text("name"),
                                     ],
                                   )),
-                              SizedBox(
-                                width: 20,
-                              ),
+                              // SizedBox(
+                              //   width: 20,
+                              // ),
                               Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Complaint",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  Text("Name",style: TextStyle(fontWeight: FontWeight.bold),),
 
                                   Text("Date"),
                                   Row(
                                     children: [
-                                      Text("Time"),
+                                      Text("Complaint"),
                                       SizedBox(
                                         width: 30,
                                       ),
@@ -86,16 +82,16 @@ class _Mechanic_requestState extends State<Mechanic_request> {
                                       )
                                     ],
                                   ),
-                                  Text("Place"),
-                                 // Container(
-                                 //   alignment: Alignment.centerRight,
-                                 //
-                                 //   height: 27,
-                                 //   width: 150,
-                                 //
-                                 //   color: Colors.green,
-                                 //   child: Center(child: Text("payment sucess")),
-                                 // )
+                                  // Text("Place"),
+                                  // Container(
+                                  //   alignment: Alignment.centerRight,
+                                  //
+                                  //   height: 27,
+                                  //   width: 150,
+                                  //
+                                  //   color: Colors.green,
+                                  //   child: Center(child: Text("payment sucess")),
+                                  // )
                                 ],
                               )
                             ],
@@ -120,3 +116,5 @@ class _Mechanic_requestState extends State<Mechanic_request> {
     );
   }
 }
+
+

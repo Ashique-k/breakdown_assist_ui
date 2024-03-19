@@ -110,7 +110,7 @@ class _Admin_UserState extends State<Admin_User> {
 
                           onPressed: (){}, child: Text("Accept"),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigo,
+                            backgroundColor: Colors.green,
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)

@@ -164,7 +164,7 @@ class _Admin_mechState extends State<Admin_mech> {
                       children: [
                         ElevatedButton(onPressed: (){}, child: Text("Accept"),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigo,
+                            backgroundColor: Colors.green,
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)

@@ -11,117 +11,90 @@ class _Accept_rejectState extends State<Accept_reject> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 50,
-            ),
-            Image.asset("assets/images/men.png"),
-            Text("Name"),
-            SizedBox(
-              height: 40,
-            ),
-            Row(
-              children: [
-                Text("Problem"),
-                SizedBox(
-                  width: 30,
+      body: Center(
+        child: Container(
+          height: 550,
+          width: 330,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.blue.shade200
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 5,
+              ),
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage("assets/images/person.png"),
+              ),
+              Text("Name",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              SizedBox(
+                height: 60,
+              ),
 
-                ),
-                Text(":"),
-                SizedBox(
-                  height: 20,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Problem",style: TextStyle(fontSize: 20),),
+                  Text(": Fuel Leaking",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Place",style: TextStyle(fontSize: 20),),
+                  Text(": Kozhikode",style: TextStyle(fontSize: 20),),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Date",style: TextStyle(fontSize: 20),),
+                  Text(": Date",style: TextStyle(fontSize: 20),),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Time",style: TextStyle(fontSize: 20),),
 
-                ),
-                Text("Complaint"),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Place"),
-                SizedBox(
-                  width: 30,
-
-                ),
-                Text(":"),
-                SizedBox(
-                  height: 20,
-
-                ),
-                Text("location"),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Date"),
-                SizedBox(
-                  width: 30,
-
-                ),
-                Text(":"),
-                SizedBox(
-                  height: 20,
-
-                ),
-                Text("YYYY/mm/dd"),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Time"),
-                SizedBox(
-                  width: 30,
-
-                ),
-                Text(":"),
-                SizedBox(
-                  height: 20,
-
-                ),
-                Text("Time"),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Contact no"),
-                SizedBox(
-                  width: 30,
-
-                ),
-                Text(":"),
-                SizedBox(
-                  height: 20,
-
-                ),
-                Text("00000"),
-                ElevatedButton(onPressed: (){
-
-                }, child: Text("Accept"),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-
-                ),
-                ),
-                SizedBox(
-                  width: 30,
-
-                ),
-                ElevatedButton(onPressed: (){
-
-                }, child: Text("Reject"),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                ),
-              ],
-
-            )
-          ],
-          
+                  Text(": Time",style: TextStyle(fontSize: 20),),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Contact Number",style: TextStyle(fontSize: 20),),
+                  Text(": 0000000000",style: TextStyle(fontSize: 20),),
+                ],
+              ),
+              SizedBox(
+                height: 130,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      style:ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green.shade400,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                      ),
+                      onPressed: (){},
+                      child: Text("Accept",style: TextStyle(fontSize: 20),)),
+                  ElevatedButton(
+                      style:ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red.shade400,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                      ),
+                      onPressed: (){},
+                      child: Text("Reject",style: TextStyle(fontSize: 20),))
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

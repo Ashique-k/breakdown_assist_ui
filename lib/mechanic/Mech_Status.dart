@@ -9,114 +9,151 @@ class mech_status extends StatefulWidget {
 
 class _mech_statusState extends State<mech_status> {
   String ? status;
-  bool ? value = false;
-  bool ? values = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset("assets/images/men.png"),
-            Text("Name"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Complaint"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text("Date"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text("Time"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text("Place"),
-                    SizedBox(
-                      height: 50,
-
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20),
-
-                      child: Text("Add Status"),
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 30,
-                          width: 180,
-                        ),
-                        ListTile(
-                          title: Text("Completed"),
-                          leading: Radio(value: "Completed", groupValue: status, onChanged: (String ? value){
+                SizedBox(
+                  height: 100,
+                ),
+                Container(
+                  height: 150,
+                  width: 320,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.blue.shade200,
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 40,
+                            backgroundImage:AssetImage("assets/images/men.png"),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text("Name",style: TextStyle(fontSize: 20),),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Fuel Leaking",style: TextStyle(fontSize: 17),),
+                          Text("Date",style: TextStyle(fontSize: 17),),
+                          Text("Time",style: TextStyle(fontSize: 17),),
+                          Text("Place",style: TextStyle(fontSize: 17),),
+                        ],
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 200, 0),
+                  child: Text("Add status",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Radio(
+                          value: "Completed",
+                          groupValue: status,
+                          onChanged: (value){
                             setState(() {
-                              status=value;
+                              status = value;
                             });
-                          }),
 
+                          }
+                      ),
+                      Text("Completed",style: TextStyle(fontSize: 15),),
 
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Radio(
+                              value: "Not Completed",
+                              groupValue: status,
+                              onChanged: (value){
+                                setState(() {
+                                  status = value;
+                                });
+
+                              }
+                          ),
+                          Text("Not Completed",style: TextStyle(fontSize: 15)),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 225, 0),
+                  child: Text("Amount",style: TextStyle(fontSize: 20)),
+                ),
+                SizedBox(
+                  height:20 ,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 90
+                  ),
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        ListTile(
-                          title: Text("Not Completed"),
-                          leading: Radio(value: "Not completed", groupValue: status, onChanged: (String ? values){
-                            setState(() {
-                              status=values;
-                            });
-                          }),
-
-
-                        ),
-                        SizedBox(
-                          height: 50,
-
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Text("Amount"),
-                            ),
-                            TextField(
-                              decoration: InputDecoration(
-                                hintText: "2000/-",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(6)
-                                )
-
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-
-                            ),
-                            ElevatedButton(onPressed: (){}, child: Text("Submit"))
-                          ],
-                        )
-
-
-                      ],
-                    )
-
-                  ],
-                )
+                        prefixIcon: Icon(Icons.currency_rupee)
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                ElevatedButton(
+                    style:ElevatedButton.styleFrom(
+                      fixedSize: Size(170,30),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                    ),
+                    onPressed: (){},
+                    child: Text("Submit",style: TextStyle(fontSize: 20),))
               ],
-            )
-          ],
-        ),
-      ) ,
+            ),
+          ),
+        )
     );
   }
 }

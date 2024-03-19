@@ -8,115 +8,155 @@ class Mech_Reject_Page extends StatefulWidget {
 }
 
 class _Mech_Reject_PageState extends State<Mech_Reject_Page> {
-  String ? status;
-  bool ? value = false;
-  bool ? values = false;
+  String ? Status;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset("assets/images/men.png"),
-            Text("Name"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                SizedBox(
+                  height: 100,
+                ),
+                Container(
+                  height: 150,
+                  width: 320,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.blue.shade200,
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 40,
+                            backgroundImage:AssetImage("assets/images/men.png"),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text("Name",style: TextStyle(fontSize: 20),),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Fuel Leaking",style: TextStyle(fontSize: 17),),
+                          Text("Date",style: TextStyle(fontSize: 17),),
+                          Text("Time",style: TextStyle(fontSize: 17),),
+                          Text("Place",style: TextStyle(fontSize: 17),),
+                        ],
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 200, 0),
+                  child: Text("Add status",style: TextStyle(fontSize: 25),),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("Complaint"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text("Date"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text("Time"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text("Place"),
-                    SizedBox(
-                      height: 50,
+                    Radio(
+                        value: "Completed",
+                        groupValue: Status,
+                        onChanged: (value){
+                          setState(() {
+                            Status = value;
+                          });
 
+                        }
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20),
+                    Text("Completed",style: TextStyle(fontSize: 15),),
 
-                      child: Text("Add Status"),
+                    SizedBox(
+                      width: 10,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          height: 30,
-                          width: 180,
+                        Radio(
+                            value: "Not Completed",
+                            groupValue: Status,
+                            onChanged: (value){
+                              setState(() {
+                                Status = value;
+                              });
+
+                            }
                         ),
-                        ListTile(
-                          title: Text("Completed"),
-                          leading: Radio(value: "Completed", groupValue: status, onChanged: (String ? value){
-                            setState(() {
-                              status=value;
-                            });
-                          }),
-
-
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        ListTile(
-                          title: Text("Not Completed"),
-                          leading: Radio(value: "Not completed", groupValue: status, onChanged: (String ? values){
-                            setState(() {
-                              status=values;
-                            });
-                          }),
-
-
-                        ),
-                        SizedBox(
-                          height: 50,
-
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Text("Amount"),
-                            ),
-                            TextField(
-                              decoration: InputDecoration(
-                                  hintText: "2000/-",
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6)
-                                  )
-
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-
-                            ),
-                            ElevatedButton(onPressed: (){}, child: Text("Submit"))
-                          ],
-                        )
+                        Text("Not Completed",style: TextStyle(fontSize: 15)),
 
 
                       ],
-                    )
-
+                    ),
                   ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 200),
+                  child: Text("Reject Reason",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+
+
+
+
+                  height: 150,
+                  width: 250,
+                  decoration: BoxDecoration(
+
+
+                    color: Colors.blueGrey,
+
+                    borderRadius: BorderRadius.circular(10.0),
+
+
+                  ),
+
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 300,
+                  child: ElevatedButton(onPressed: (){}, child: Text("Submit",style: TextStyle(color: Colors.black),),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue.shade200
+                  ),
+
+                  ),
                 )
+
               ],
-            )
-          ],
-        ),
-      ) ,
+            ),
+          ),
+        )
     );
   }
 }

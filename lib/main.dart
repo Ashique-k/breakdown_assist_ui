@@ -1,5 +1,41 @@
 import 'package:breakdown_assist/splash_screens.dart';
+import 'package:breakdown_assist/user/Mech_failed_page.dart';
+import 'package:breakdown_assist/user/User_Login.dart';
+import 'package:breakdown_assist/user/User_Mechanic_bill_page.dart';
+import 'package:breakdown_assist/user/User_Request.dart';
+import 'package:breakdown_assist/user/User_home.dart';
+import 'package:breakdown_assist/user/User_notification.dart';
+import 'package:breakdown_assist/user/User_payment_sucess.dart';
+import 'package:breakdown_assist/user/User_profile.dart';
+import 'package:breakdown_assist/user/User_sign_up_page.dart';
+import 'package:breakdown_assist/user/user_mechanic_details.dart';
+import 'package:breakdown_assist/user/user_rating_Page.dart';
 import 'package:flutter/material.dart';
+
+import 'admin/ADMIN_MECH.dart';
+import 'admin/ADMIN_USER.dart';
+import 'admin/Admin_tab.dart';
+import 'admin/admin_add_notification.dart';
+import 'admin/admin_add_user.dart';
+import 'admin/admin_home.dart';
+import 'admin/admin_home_mechanic.dart';
+import 'admin/admin_login.dart';
+import 'admin/admin_notification.dart';
+import 'admin/admin_payment.dart';
+import 'admin/admin_sign.dart';
+import 'mechanic/Mech_Home.dart';
+import 'mechanic/Mech_Status.dart';
+import 'mechanic/Mech_requested_home.dart';
+import 'mechanic/Mech_service_home.dart';
+import 'mechanic/mech_accept_reject.dart';
+import 'mechanic/mech_edit_profile.dart';
+import 'mechanic/mech_login.dart';
+import 'mechanic/mech_profile.dart';
+import 'mechanic/mech_rating.dart';
+import 'mechanic/mech_reject_page.dart';
+import 'mechanic/mech_service_page.dart';
+import 'mechanic/mech_tab.dart';
+import 'mechanic/notification_mech.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +49,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-    home: Splash(),
+    home: mech_status(),
     );
   }
 }
