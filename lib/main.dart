@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-    home: mech_status(),
+    home: User_Payment_sucsess(),
     );
   }
 }
