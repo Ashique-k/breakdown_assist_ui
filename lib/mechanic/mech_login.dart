@@ -96,12 +96,12 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                     }
 
 
-                  }, child: Text("Login",style: TextStyle(fontSize: 20,color: Colors.white),),
+                  }, child: Text("Login",style: TextStyle(fontSize: 20,color: Colors.black),),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      backgroundColor: Colors.red,
+                      backgroundColor: Colors.orangeAccent,
 
                     ),
                   ),
@@ -116,7 +116,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                     TextButton(onPressed: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => MECH_SIGN()),
+                        MaterialPageRoute(builder: (context) => MECH_SIGN_UP()),
                       );
 
 

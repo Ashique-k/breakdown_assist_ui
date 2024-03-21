@@ -1,3 +1,4 @@
+import 'package:breakdown_assist/firebase_options.dart';
 import 'package:breakdown_assist/splash_screens.dart';
 import 'package:breakdown_assist/user/Mech_failed_page.dart';
 import 'package:breakdown_assist/user/User_Login.dart';
@@ -10,6 +11,7 @@ import 'package:breakdown_assist/user/User_profile.dart';
 import 'package:breakdown_assist/user/User_sign_up_page.dart';
 import 'package:breakdown_assist/user/user_mechanic_details.dart';
 import 'package:breakdown_assist/user/user_rating_Page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'admin/ADMIN_MECH.dart';
@@ -37,7 +39,9 @@ import 'mechanic/mech_service_page.dart';
 import 'mechanic/mech_tab.dart';
 import 'mechanic/notification_mech.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -49,7 +53,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-    home: User_Payment_sucsess(),
+    home: Splash(),
     );
   }
 }

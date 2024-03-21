@@ -9,7 +9,21 @@ class ADMIN_SIGN extends StatefulWidget {
 }
 
 class _ADMIN_SIGNState extends State<ADMIN_SIGN> {
+  var username=TextEditingController();
+  var password=TextEditingController();
 final _formkey=GlobalKey<FormState>();
+  final SnackBar _snackbar = SnackBar(content: Text("logging in"),duration: Duration(seconds: 4),);
+
+login(){
+  if (username.text == 'ashikmessi3@gmail.com' && password.text == '123456'){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Admin_home()),
+    );
+
+  }
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +52,7 @@ final _formkey=GlobalKey<FormState>();
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: username,
                     validator: (value) {
                       if (value == null || value.isEmpty) {   // Validation Logic
                         return 'Please enter username';
@@ -58,6 +73,8 @@ final _formkey=GlobalKey<FormState>();
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    obscureText: true,
+                    controller: password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {   // Validation Logic
                         return 'Please enter password';
@@ -84,10 +101,12 @@ final _formkey=GlobalKey<FormState>();
 
                     child: ElevatedButton(onPressed: (){
                       if(_formkey.currentState!.validate()) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Admin_home()),
-                        );
+                        ScaffoldMessenger.of(context).showSnackBar(_snackbar);
+                        login();
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => Admin_home()),
+                        // );
 
                       }
 

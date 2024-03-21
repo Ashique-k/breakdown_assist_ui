@@ -44,8 +44,8 @@ class _Admin_notificationState extends State<Admin_notification> {
                     itemBuilder: (BuildContext context,int index){
                       return
                         ListTile(
-                          title: Text("Heading",style: TextStyle(fontWeight: FontWeight.bold),),
-                          subtitle: Text("place",style: TextStyle(fontSize: 15),),
+                          title: Text("heading",style: TextStyle(fontWeight: FontWeight.bold),),
+                          subtitle: Text("content",style: TextStyle(fontSize: 15),),
                         );
 
 

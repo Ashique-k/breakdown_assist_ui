@@ -1,15 +1,43 @@
 import 'package:breakdown_assist/mechanic/mech_login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class MECH_SIGN extends StatefulWidget {
-  const MECH_SIGN({super.key});
+class MECH_SIGN_UP extends StatefulWidget {
+  const MECH_SIGN_UP({super.key});
 
   @override
-  State<MECH_SIGN> createState() => _MECH_SIGNState();
+  State<MECH_SIGN_UP> createState() => _MECH_SIGN_UPState();
 }
 
-class _MECH_SIGNState extends State<MECH_SIGN> {
-  final _formkey=GlobalKey<FormState>();
+class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
+  var usernamectrl=TextEditingController();
+  var phonectrl=TextEditingController();
+  var emailctrl=TextEditingController();
+  var experiencectrl=TextEditingController();
+  var shopctrl=TextEditingController();
+  var passwordctrl=TextEditingController();
+  Future<dynamic> mechsignup()async{
+    await FirebaseFirestore.instance.collection('mechsignup').add({
+      "username":usernamectrl.text,
+      "phone":phonectrl.text,
+      "email":emailctrl.text,
+      "experience":experiencectrl.text,
+      "shop":shopctrl.text,
+      "password":passwordctrl.text,
+      "status":0
+    }).then((value) => {
+      print("suceess"),
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MECH_LOGIN()),
+      ),
+
+    });
+}
+
+  final SnackBar _snackbar = SnackBar(content: Text("succeesfully registerd"),duration: Duration(seconds: 4),);
+
+    final _formkey=GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +63,7 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: usernamectrl,
                   validator: (value) {
                     if (value == null || value.isEmpty) {   // Validation Logic
                       return 'Please enter username';
@@ -42,7 +71,7 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
                     return null;
                   },
                   decoration: InputDecoration(
-                    hintText: "Enter Username",
+                    hintText: "Enter username",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)
                     )
@@ -56,6 +85,7 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: phonectrl,
                   validator: (value) {
                     if (value == null || value.isEmpty) {   // Validation Logic
                       return 'enter phone number';
@@ -63,7 +93,7 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
                     return null;
                   },
                   decoration: InputDecoration(
-                      hintText: "Enter Phone number",
+                      hintText: "Enter phone number",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
@@ -77,14 +107,15 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: emailctrl,
                   validator: (value) {
                     if (value == null || value.isEmpty) {   // Validation Logic
-                      return 'please enter mail';
+                      return 'please enter email';
                     }
                     return null;
                   },
                   decoration: InputDecoration(
-                      hintText: "Enter Email",
+                      hintText: "Enter email",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
@@ -98,9 +129,10 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: experiencectrl,
                   validator: (value) {
                     if (value == null || value.isEmpty) {   // Validation Logic
-                      return 'required field';
+                      return 'enter experience';
                     }
                     return null;
                   },
@@ -119,9 +151,10 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: shopctrl,
                   validator: (value) {
                     if (value == null || value.isEmpty) {   // Validation Logic
-                      return 'required field';
+                      return 'enter shop';
                     }
                     return null;
                   },
@@ -140,9 +173,10 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: passwordctrl,
                   validator: (value) {
                     if (value == null || value.isEmpty) {   // Validation Logic
-                      return 'Please enter password';
+                      return 'enter password';
                     }
                     return null;
                   },
@@ -164,15 +198,20 @@ class _MECH_SIGNState extends State<MECH_SIGN> {
 
                   child: ElevatedButton(onPressed: (){
                     if(_formkey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MECH_LOGIN()),
-                      );
+                      ScaffoldMessenger.of(context).showSnackBar(_snackbar);
+
+                      mechsignup();
+
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => MECH_LOGIN()),
+                      // );
 
                     }
 
-                  }, child: Text("Sign in"),
+                  }, child: Text("Sign in",style: TextStyle(color: Colors.black),),
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orangeAccent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)
                     )
