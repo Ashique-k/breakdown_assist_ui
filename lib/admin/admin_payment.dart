@@ -21,9 +21,9 @@ class _Admin_paymentState extends State<Admin_payment> {
                 child: ListView.separated(
                     separatorBuilder: (context,index)=>Divider(
                       indent: 13,
-                      endIndent: 60,
+                      endIndent: 35,
                       color:Colors.white ,
-                      thickness: 20,
+                      thickness: 5,
                       height: 50,
                     ),
                     itemCount: 10,

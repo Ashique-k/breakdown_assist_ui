@@ -12,15 +12,18 @@ class USER_SIGNIN extends StatefulWidget {
 
 class _USER_SIGNINState extends State<USER_SIGNIN> {
   var usernamectrl=TextEditingController();
+  var locationctrl=TextEditingController();
   var phonectrl=TextEditingController();
   var emailctrl=TextEditingController();
   var passwordctrl=TextEditingController();
+
   final _formkey=GlobalKey<FormState>();
   final SnackBar _snackbar = SnackBar(content: Text("succeesfully registerd"),duration: Duration(seconds: 4),);
 
   Future<dynamic> usersignup()async{
    await FirebaseFirestore.instance.collection('usersignup').add({
      "username":usernamectrl.text,
+     "location":locationctrl.text,
      "phone":phonectrl.text,
      "email":emailctrl.text,
      "password":passwordctrl.text,
@@ -83,6 +86,35 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
             height: 10,
         
           ),
+              Padding(
+                padding: const EdgeInsets.only(right: 240),
+                child: Text("Enter Location",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  controller: locationctrl,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {   // Validation Logic
+                      return ' enter location';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    hintText: "location",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8)
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+
+              ),
           Padding(
             padding: const EdgeInsets.only(right: 200),
             child: Text("Enter Your Phone number",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),

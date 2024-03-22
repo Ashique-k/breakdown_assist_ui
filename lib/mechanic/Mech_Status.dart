@@ -25,7 +25,7 @@ class _mech_statusState extends State<mech_status> {
                   width: 320,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.blue.shade200,
+                    color: Colors.orangeAccent,
                   ),
                   child: Row(
                     children: [
@@ -145,8 +145,8 @@ class _mech_statusState extends State<mech_status> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
                       ),
-                      backgroundColor: Colors.blue,
-                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.orangeAccent,
+                      foregroundColor: Colors.black,
                     ),
                     onPressed: (){},
                     child: Text("Submit",style: TextStyle(fontSize: 20),))

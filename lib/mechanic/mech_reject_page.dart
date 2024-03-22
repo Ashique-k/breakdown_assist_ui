@@ -25,7 +25,7 @@ class _Mech_Reject_PageState extends State<Mech_Reject_Page> {
                   width: 320,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.blue.shade200,
+                    color: Colors.orangeAccent,
                   ),
                   child: Row(
                     children: [
@@ -121,37 +121,47 @@ class _Mech_Reject_PageState extends State<Mech_Reject_Page> {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
 
 
 
 
-                  height: 150,
-                  width: 250,
-                  decoration: BoxDecoration(
+                    height: 150,
+                    width: 250,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black)
 
 
-                    color: Colors.blueGrey,
 
-                    borderRadius: BorderRadius.circular(10.0),
+
 
 
                   ),
+                  child: TextFormField(
+                    maxLines: 5,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                    ),
+                  ),
 
+
+
+                  ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 SizedBox(
                   height: 50,
-                  width: 300,
+                  width: 250,
                   child: ElevatedButton(onPressed: (){}, child: Text("Submit",style: TextStyle(color: Colors.black),),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue.shade200
+                    backgroundColor: Colors.orangeAccent
                   ),
-
                   ),
-                )
+                ),
 
               ],
             ),

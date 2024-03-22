@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 class Admin_add_notification extends StatefulWidget {
   const Admin_add_notification({super.key});
 
@@ -11,14 +12,20 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
   final _formkey=GlobalKey<FormState>();
   var matterctrl=TextEditingController();
   var contentctrl=TextEditingController();
+  final date = new DateTime.now();
+  TimeOfDay time = TimeOfDay.now();
   Future<dynamic> submit()async{
     await FirebaseFirestore.instance.collection("notification").add({
       "matter":matterctrl.text,
       "content":contentctrl.text,
+      'time':time.format(context),
+      'date':DateFormat('dd/mm/yy').format(date),
       "status":0
     }).then((value) => {
     Navigator.pop(context),
     });
+    matterctrl.clear();
+    contentctrl.clear();
 
   }
   final SnackBar _bar=SnackBar(content: Text("Added"),duration: Duration(seconds: 3),);
