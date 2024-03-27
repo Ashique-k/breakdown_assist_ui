@@ -78,7 +78,7 @@ class _USER_REQUESTState extends State<USER_REQUEST> {
                                         width: 150,
 
                                         color: Colors.green,
-                                        child: Center(child: Text("payment sucess")),
+                                        child: Center(child: Text("Approved")),
                                       )
                                     ],
                                   ),

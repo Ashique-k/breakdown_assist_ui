@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'ADMIN_USER.dart';
 class Admin_home_user extends StatefulWidget {
   const Admin_home_user({super.key});
 
@@ -50,43 +52,56 @@ class _Admin_home_userState extends State<Admin_home_user> {
                         itemCount: user.length,
                         itemBuilder: (BuildContext context, int index) {
                           return
-                            Container(
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context){
+                                  return Admin_User(id:user[index].id);
+                                }
+                                ));
+                              },
 
-                              height: 100,
-                              width: 200,
+                              child: Container(
 
 
-                              child: Row(
-
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                height: 100,
+                                width: 200,
 
 
-                                children: [
-                                  SizedBox(
-                                      height: 50,
-                                      width: 50,
-                                      child: Image.asset(
-                                          "assets/images/men.png")),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .start,
-                                    children: [
-                                      Text(user[index]["username"], style: TextStyle(
-                                          fontWeight: FontWeight.bold),),
-                                      Text(user[index]["location"]),
-                                      Text(user[index]["phone"]),
-                                      Text(user[index]["email"]),
-                                    ],
-                                  )
-                                ],
+
+                                child: Row(
+
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+
+
+                                  children: [
+                                    SizedBox(
+                                        height: 50,
+                                        width: 50,
+                                        child: Image.asset(
+                                            "assets/images/men.png")),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Column(
+
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment
+                                          .start,
+                                      children: [
+
+                                        Text(user[index]["username"], style: TextStyle(
+                                            fontWeight: FontWeight.bold),),
+                                        Text(user[index]["location"]),
+                                        Text(user[index]["phone"]),
+                                        Text(user[index]["email"]),
+                                      ],
+                                    )
+                                  ],
+
+                                ),
 
                               ),
-
                             );
                         }
 

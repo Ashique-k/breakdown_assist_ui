@@ -28,14 +28,14 @@ class _MECH_RATINGState extends State<MECH_RATING> {
     Text("The rating given to you"),
     Container(
     height: 900,
-    width: 470,
+    width: 450,
     child: ListView.separated(
     separatorBuilder: (context,index)=>Divider(
     indent: 13,
-    endIndent: 60,
+    endIndent: 40,
     color:Colors.white ,
-    thickness: 20,
-    height: 50,
+    thickness:3,
+    height: 30,
     ),
     itemCount: 10,
     itemBuilder: (BuildContext context,int index){
@@ -92,8 +92,15 @@ class _MECH_RATINGState extends State<MECH_RATING> {
     ),
     Column(
     children: [
+      SizedBox(
+        height: 5,
+      ),
     Text("Rating"),
     SizedBox(
+      height: 15,
+    ),
+    SizedBox(
+
 
     child: RatingBar.builder(
     itemSize:16 ,

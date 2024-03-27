@@ -2,6 +2,7 @@ import 'package:breakdown_assist/firebase_options.dart';
 import 'package:breakdown_assist/splash_screens.dart';
 import 'package:breakdown_assist/user/Mech_failed_page.dart';
 import 'package:breakdown_assist/user/User_Login.dart';
+import 'package:breakdown_assist/user/User_Mechanic.dart';
 import 'package:breakdown_assist/user/User_Mechanic_bill_page.dart';
 import 'package:breakdown_assist/user/User_Request.dart';
 import 'package:breakdown_assist/user/User_home.dart';
@@ -30,11 +31,11 @@ import 'mechanic/Mech_Status.dart';
 import 'mechanic/Mech_requested_home.dart';
 import 'mechanic/Mech_service_home.dart';
 import 'mechanic/mech_accept_reject.dart';
-import 'mechanic/mech_edit_profile.dart';
-import 'mechanic/mech_login.dart';
 import 'mechanic/mech_profile.dart';
+import 'mechanic/mech_login.dart';
+import 'mechanic/edit_mech_profile.dart';
 import 'mechanic/mech_rating.dart';
-import 'mechanic/mech_reject_page.dart';
+
 import 'mechanic/mech_service_page.dart';
 import 'mechanic/mech_tab.dart';
 import 'mechanic/notification_mech.dart';
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-    home: Splash(),
+    home: USER_LOGIN(),
     );
   }
 }

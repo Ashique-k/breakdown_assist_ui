@@ -1,5 +1,5 @@
 
-import 'package:breakdown_assist/mechanic/mech_edit_profile.dart';
+import 'package:breakdown_assist/mechanic/mech_profile.dart';
 import 'package:breakdown_assist/mechanic/mech_rating.dart';
 import 'package:breakdown_assist/mechanic/mech_service_page.dart';
 import 'package:breakdown_assist/mechanic/mech_tab.dart';
