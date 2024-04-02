@@ -15,6 +15,8 @@ class _Admin_notificationState extends State<Admin_notification> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.orange.shade200,
+        elevation: 5,
         onPressed:(){
           Navigator.push(
             context,
@@ -49,27 +51,39 @@ class _Admin_notificationState extends State<Admin_notification> {
                     final notify = snapshot.data?.docs ?? [];
 
 
-                    return ListView.separated(
-                        separatorBuilder: (context, index) =>
-                            Divider(
-                              indent: 13,
-                              endIndent: 35,
-                              color: Colors.white,
-                              thickness: 5,
-                              height: 50,
-                            ),
-                        itemCount: notify.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return
-                            ListTile(
-                              title: Text(notify[index]["matter"],
-                                style: TextStyle(fontWeight: FontWeight.bold),),
-                              subtitle: Text(
-                                notify[index]["content"], style: TextStyle(fontSize: 15),),
-                            );
-                        }
+                    return Container(
+                      height: 50,
+                      width: 150,
+                      color: Colors.orange.shade50,
+
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)
+                        ),
+
+                        child: ListView.separated(
+                            separatorBuilder: (context, index) =>
+                                Divider(
+                                  color: Colors.white,
 
 
+                                  thickness: 3,
+                                  height: 50,
+                                ),
+                            itemCount: notify.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return
+                                ListTile(
+                                  title: Text(notify[index]["matter"],
+                                    style: TextStyle(fontWeight: FontWeight.bold),),
+                                  subtitle: Text(
+                                    notify[index]["content"], style: TextStyle(fontSize: 15),),
+                                );
+                            }
+
+
+                        ),
+                      ),
                     );
                   }
 

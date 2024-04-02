@@ -67,24 +67,40 @@ class _USER_HOMEState extends State<USER_HOME> {
           ),
 
 
-          bottomSheet: Card(
+          bottomSheet: TabBar(
 
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(1)
-            ),
-            child: TabBar(
 
-                tabs: [
-              Tab(
-                child: Text("Mechanic",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-            
+              tabs: [
+            Container(
+              height: 40,
+              width: 200,
+              child: Card(
+                color: Colors.orange.shade200,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)
+                ),
+                child: Tab(
+                  child: Text("Mechanic",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+
+                ),
               ),
-              Tab(
+            ),
+            Container(
+              height: 40,
+              width: 200,
+              child: Card(
+                color: Colors.orange.shade200,
+                borderOnForeground:true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)
+                ),
+                child: Tab(
 
-                child: Text("Request",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-              )
-            ]),
-          ),
+                  child: Text("Request",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                ),
+              ),
+            )
+          ]),
           body: TabBarView(children: [
             USER_MECHANIC(),
             USER_REQUEST(),

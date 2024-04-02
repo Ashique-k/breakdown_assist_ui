@@ -13,107 +13,166 @@ class _Admin_home_userState extends State<Admin_home_user> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
 
-              Container(
-                height: 900,
-                width: 470,
-                child: FutureBuilder(
-                  future: FirebaseFirestore.instance.collection("usersignup").get(),
+                Container(
+                  height: 900,
+                  width: 470,
+                  child: FutureBuilder(
+                    future: FirebaseFirestore.instance.collection("usersignup").get(),
 
-                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-
-
-                    if (snapshot.hasError) {
-                      return Center(
-                        child: Text("Error:${snapshot.error}"),
-                      );
-                    }
-                    final user = snapshot.data?.docs ?? [];
-                    return ListView.separated(
+                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
 
 
-                        separatorBuilder: (context, index) =>
-                            Divider(
-                              indent: 13,
-                              endIndent: 50,
-                              color: Colors.white,
-                              thickness: 5,
-                              height: 50,
-                            ),
-                        itemCount: user.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return
-                            InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context){
-                                  return Admin_User(id:user[index].id);
-                                }
-                                ));
-                              },
+                      if (snapshot.hasError) {
+                        return Center(
+                          child: Text("Error:${snapshot.error}"),
+                        );
+                      }
+                      final user = snapshot.data?.docs ?? [];
+                      return Container(
 
-                              child: Container(
+                        height: 50,
+                        width: 150,
+                        child: Card(
+                          child: ListView.separated(
 
 
-                                height: 100,
-                                width: 200,
+                              separatorBuilder: (context, index) =>
+                                  Divider(
+
+                                    color: Colors.white,
+                                    thickness: 3,
+                                    height: 50,
+                                  ),
+                              itemCount: user.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return
+                                  InkWell(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                                        return Admin_User(id:user[index].id);
+                                      }
+                                      ));
+                                    },
+
+                                    child: Container(
+
+
+                                      height: 100,
+                                      width: 200,
 
 
 
-                                child: Row(
+                                      child: Row(
 
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
 
 
-                                  children: [
-                                    SizedBox(
-                                        height: 50,
-                                        width: 50,
-                                        child: Image.asset(
-                                            "assets/images/men.png")),
-                                    SizedBox(
-                                      width: 20,
+                                        children: [
+                                          CircleAvatar(
+
+                                            backgroundImage: ExactAssetImage("assets/images/men.png"),
+                                            radius: 30,
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Column(
+
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .start,
+                                            children: [
+
+                                              Text(user[index]["username"], style: TextStyle(
+                                                  fontWeight: FontWeight.bold),),
+                                              Text(user[index]["location"]),
+                                              Text(user[index]["phone"]),
+                                              Text(user[index]["email"]),
+                                            ],
+                                          ),
+                                         user[index]['status']==0? Padding(
+                                           padding: const EdgeInsets.only(left: 35),
+                                           child: Container(
+                                             height: 50,
+                                             width: 150,
+                                             color: Colors.blueAccent,
+                                             child: Text("Pending",style: TextStyle(
+                                               fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white
+                                             ),
+                                           ),
+
+
+
+                                           ),
+                                         ):user[index]['status']==1?
+                                             Padding(
+                                               padding: const EdgeInsets.only(left: 40),
+                                               child: Container(
+                                                 height: 40,
+                                                 width: 100,
+                                                 color: Colors.green,
+                                                 child: Center(child: Text("Accept",style: TextStyle(color: Colors.black,fontSize: 12,fontWeight: FontWeight.bold),)),
+                                               ),
+                                             ):Container(
+                                           height: 40,
+                                           width: 100,
+                                           color: Colors.red,
+                                           child: Center(child: Text("Reject",style: TextStyle(color: Colors.black,fontSize: 12,fontWeight: FontWeight.bold),)),
+                                         )
+                                             // SizedBox(
+                                             //   height: 50,
+                                             //   width: 150,
+                                             //   child: ElevatedButton(onPressed: (){}, child: Text("Accept"),
+                                             //     style: ElevatedButton.styleFrom(
+                                             //       shape: RoundedRectangleBorder(
+                                             //         borderRadius: BorderRadius.circular(2)
+                                             //       ),
+                                             //       foregroundColor: Colors.white,
+                                             //       backgroundColor: Colors.green
+                                             //     ),
+                                             //
+                                             //   ),
+                                             // ):ElevatedButton(onPressed: (){
+
+                                         // }, child: Text("Reject"),
+                                         //   style: ElevatedButton.styleFrom(
+                                         //     foregroundColor: Colors.white,
+                                         //     backgroundColor: Colors.red,
+                                         //   ),
+                                         // )
+
+                                        ]
+
+                                      ),
+
                                     ),
-                                    Column(
-
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment
-                                          .start,
-                                      children: [
-
-                                        Text(user[index]["username"], style: TextStyle(
-                                            fontWeight: FontWeight.bold),),
-                                        Text(user[index]["location"]),
-                                        Text(user[index]["phone"]),
-                                        Text(user[index]["email"]),
-                                      ],
-                                    )
-                                  ],
-
-                                ),
-
-                              ),
-                            );
-                        }
+                                  );
+                              }
 
 
-                    );
-                  }
-                ),
+                          ),
+                        ),
+                      );
+                    }
+                  ),
 
 
 
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

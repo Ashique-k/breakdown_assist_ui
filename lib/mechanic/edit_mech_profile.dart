@@ -1,5 +1,10 @@
+
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MECH_PROFILE extends StatefulWidget {
@@ -17,6 +22,54 @@ class MECH_PROFILE extends StatefulWidget {
 }
 
 class _MECH_PROFILEState extends State<MECH_PROFILE> {
+
+  var imageURL;
+  XFile? _image;
+
+  Future<void> pickimage() async {
+    print("object");
+    final ImagePicker _picker = ImagePicker();
+    try {
+      XFile? pickedimage = await _picker.pickImage(source: ImageSource.gallery);
+      if (pickedimage != null) {
+        setState(() {
+          _image = pickedimage;
+        });
+        print("Image upload succersfully");
+        await uploadimage();
+      }
+    } catch (e) {
+      print("Error picking image:$e");
+    }
+  }
+
+  Future<void> uploadimage() async {
+    try {
+      if (_image != null) {
+        Reference storrageReference =
+        FirebaseStorage.instance.ref().child('profile/${_image!.path}');
+        await storrageReference.putFile(File(_image!.path));
+        imageURL = await storrageReference.getDownloadURL();
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+              "Uploaded succesfully",
+              style: TextStyle(color: Colors.green),
+            )));
+
+        FirebaseFirestore.instance
+            .collection("mechsignup")
+            .doc(Id)
+            .update({"path": imageURL});
+        print("/////////picked$imageURL");
+      } else
+        CircularProgressIndicator();
+    } catch (e) {
+      print("Error uploading image:$e");
+    }
+  }
+
+
+
 
 
   void initState() {
@@ -73,14 +126,22 @@ class _MECH_PROFILEState extends State<MECH_PROFILE> {
             SizedBox(
               height: 50,
             ),
-            SizedBox(
-                height: 120,
-                width: 120,
-                child: Image.asset("assets/images/person.png")),
-            SizedBox(
-              height: 10,
 
-            ),
+              CircleAvatar(
+                radius: 70,
+                backgroundImage: ExactAssetImage("assets/images/person.png"),
+              ),
+              IconButton(onPressed: (){
+                pickimage();
+
+              }, icon: Icon(Icons.camera_alt)),
+
+
+              //
+              // Image.asset("assets/images/person.png")),
+
+
+
             // TextFormField(
             //   controller: namectrl,
             //
@@ -92,10 +153,7 @@ class _MECH_PROFILEState extends State<MECH_PROFILE> {
             //     ),
             //   ),
             // ),
-            SizedBox(
-              height: 3,
 
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
@@ -218,8 +276,10 @@ class _MECH_PROFILEState extends State<MECH_PROFILE> {
                 ),
               ),
             )
+
           ],
         ),
+
       ),
     );
   }

@@ -38,13 +38,7 @@ var ID='';
 
 Future<void>getdata()async{
   SharedPreferences prefs =await SharedPreferences.getInstance();
-  // username = data.getString('username')!;
-  // phone = data.getString('phone')!;
-  // email = data.getString('email')!;
-  // experience = data.getString('experience')!;
-  // shop = data.getString('shop')!;
-  // location =data.getString('location')!;
-  // ID = prefs.getString('id')!;
+
   setState(() {
     ID = prefs.getString('id')!;
   });
@@ -92,14 +86,15 @@ DocumentSnapshot ? mech;
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                  height: 150,
-                  width: 150,
-                  child: Image.asset("assets/images/person.png")),
-              SizedBox(
-                height: 8,
-
+              mech?['path']==''?
+                  CircleAvatar(
+                    backgroundImage: ExactAssetImage("assets/images/person.png"),
+                  ):
+              CircleAvatar(
+                radius: 70,
+                backgroundImage: NetworkImage(mech?['path']),
               ),
+
               // TextFormField(
               //   readOnly: true,
               //   decoration: InputDecoration(
@@ -110,10 +105,7 @@ DocumentSnapshot ? mech;
               //     ),
               //   ),
               // ),
-              SizedBox(
-                height: 3,
 
-              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(

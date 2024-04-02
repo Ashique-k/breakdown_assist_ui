@@ -27,6 +27,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
      "phone":phonectrl.text,
      "email":emailctrl.text,
      "password":passwordctrl.text,
+     "path":"",
      "status":0
    }).then((value) => {
      print("suceess"),

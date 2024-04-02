@@ -24,10 +24,21 @@ class _MECH_TABState extends State<MECH_TAB> {
         body: Column(
           children: [
 
-            TabBar(tabs: [Tab(child: Text("Request"),
+            Card(
+              color: Colors.orange.shade200,
+              child: TabBar(
+
+                indicator: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle
+                ),
+
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  tabs: [Tab(child: Text("Request"),
+              ),
+                Tab(child:Text("Accepted") ,)
+              ]),
             ),
-              Tab(child:Text("Accepted") ,)
-            ]),
             Expanded(
               child: TabBarView(children: [
                 MECH_SERVICE_HOME(),

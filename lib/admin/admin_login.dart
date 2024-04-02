@@ -16,7 +16,7 @@ class _ADMIN_LOGINState extends State<ADMIN_LOGIN> {
     
     return Scaffold(
       
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: Colors.orange.shade300,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -48,7 +48,7 @@ class _ADMIN_LOGINState extends State<ADMIN_LOGIN> {
                   );
 
 
-                }, child: Text("Mechanic",style: TextStyle(fontSize: 18,color: Colors.blue),),
+                }, child: Text("Mechanic",style: TextStyle(fontSize: 18,color: Colors.black),),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)
@@ -69,7 +69,7 @@ class _ADMIN_LOGINState extends State<ADMIN_LOGIN> {
                     MaterialPageRoute(builder: (context) => const USER_LOGIN()),
                   );
 
-                }, child: Text("User",style: TextStyle(fontSize: 18,color: Colors.blue),),
+                }, child: Text("User",style: TextStyle(fontSize: 18,color: Colors.black),),
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
@@ -87,7 +87,7 @@ class _ADMIN_LOGINState extends State<ADMIN_LOGIN> {
               );
 
 
-            }, child: Text("Admin Login",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),))
+            }, child: Text("Admin Login",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),))
 
 
             ],

@@ -16,6 +16,7 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
   var experiencectrl=TextEditingController();
   var shopctrl=TextEditingController();
   var passwordctrl=TextEditingController();
+  var locationctrl=TextEditingController();
   Future<dynamic> mechsignup()async{
     await FirebaseFirestore.instance.collection('mechsignup').add({
       "username":usernamectrl.text,
@@ -24,6 +25,8 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
       "experience":experiencectrl.text,
       "shop":shopctrl.text,
       "password":passwordctrl.text,
+      "location":locationctrl.text,
+      "path":"",
       "status":0
     }).then((value) => {
       print("suceess"),
@@ -116,6 +119,28 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
                   },
                   decoration: InputDecoration(
                       hintText: "Enter email",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      )
+
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  controller: locationctrl,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {   // Validation Logic
+                      return 'please enter location';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                      hintText: "Enter location",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )

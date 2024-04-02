@@ -27,6 +27,7 @@ import 'admin/admin_notification.dart';
 import 'admin/admin_payment.dart';
 import 'admin/admin_sign.dart';
 import 'mechanic/Mech_Home.dart';
+import 'mechanic/Mech_Sign.dart';
 import 'mechanic/Mech_Status.dart';
 import 'mechanic/Mech_requested_home.dart';
 import 'mechanic/Mech_service_home.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-    home: USER_LOGIN(),
+    home: ADMIN_SIGN(),
     );
   }
 }

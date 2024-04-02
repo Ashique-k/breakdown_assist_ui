@@ -62,17 +62,19 @@ class _Nofification_MechState extends State<Nofification_Mech> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                          Column(
+                           mainAxisAlignment: MainAxisAlignment.start,
+                           crossAxisAlignment: CrossAxisAlignment.start,
                            children: [
 
-                             Text(_notify[index]["content"]),
                              Text(_notify[index]["matter"]),
+                             Text(_notify[index]["content"]),
                            ],
                          ),
                           SizedBox(
                             width: 50,
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(150, 20, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
                             child: Text(_notify[index]["date"]),
                           ),
                         ],

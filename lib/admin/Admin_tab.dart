@@ -22,10 +22,32 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         body: Column(
           children: [
-
-            TabBar(tabs: [Tab(child: Text("User"),
+            SizedBox(
+              height: 20,
             ),
-              Tab(child:Text("Mechanic") ,)
+
+            TabBar(tabs: [Container(
+              height: 40,
+              width: 200,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)
+                ),
+                color: Colors.orange.shade200,
+                child: Tab(child: Text("User"),
+                ),
+              ),
+            ),
+              Container(
+                height: 40,
+                width: 200,
+                child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    color: Colors.orange.shade200,
+                    child: Tab(child:Text("Mechanic") ,)),
+              )
             ]),
             Expanded(
               child: TabBarView(children: [

@@ -19,13 +19,14 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
       "matter":matterctrl.text,
       "content":contentctrl.text,
       'time':time.format(context),
-      'date':DateFormat('dd/mm/yy').format(date),
+      'date':DateFormat('yyyy-MM-dd').format(date),
       "status":0
     }).then((value) => {
     Navigator.pop(context),
     });
     matterctrl.clear();
     contentctrl.clear();
+
 
   }
   final SnackBar _bar=SnackBar(content: Text("Added"),duration: Duration(seconds: 3),);
@@ -67,26 +68,39 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                 padding: const EdgeInsets.only(right: 250),
                 child: Text("Enter content",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
               ),
+              SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: SizedBox(
                   width: 500,
 
-                  child: TextFormField(
-                    controller: contentctrl,
-                    validator:  (value) {
-                      if (value == null || value.isEmpty) {   // Validation Logic
-                        return 'required field';
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      hintText: "content...",
+                  child: Container(
 
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    width: 250,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide.none
+                      )
+                    ),
+                    child: TextFormField(
+                      maxLines: 6,
+                      controller: contentctrl,
+                      validator:  (value) {
+                        if (value == null || value.isEmpty) {   // Validation Logic
+                          return 'required field';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        hintText: "content...",
+
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        ),
+
                       ),
-
                     ),
                   ),
                 ),

@@ -1,13 +1,42 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class mech_status extends StatefulWidget {
-  const mech_status({super.key});
+  const mech_status({super.key,required this.id});
+  final id;
 
   @override
   State<mech_status> createState() => _mech_statusState();
 }
 
+
 class _mech_statusState extends State<mech_status> {
+  var amountctrl =TextEditingController();
+  var rejectctrl =TextEditingController();
+  DocumentSnapshot? detail;
+  getData() async {
+    detail = await FirebaseFirestore.instance
+        .collection('Mechreq')
+        .doc(widget.id)
+        .get();
+  }
+  void payment(id) {
+    setState(() {
+      FirebaseFirestore.instance
+          .collection('Mechreq')
+          .doc(id)
+          .update({'payment': 3,'completed':amountctrl.text});
+    });
+  }
+
+  void paymentnotcompleted(id) {
+    setState(() {
+      FirebaseFirestore.instance
+          .collection('Mechreq')
+          .doc(id)
+          .update({'payment': 4,'paymentreject':rejectctrl.text});
+    });
+  }
 
   String? gender;
   var a;
@@ -28,55 +57,69 @@ class _mech_statusState extends State<mech_status> {
               width: 320,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.orangeAccent,
+                color: Colors.orange.shade200,
               ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 40,
-                        backgroundImage: AssetImage("assets/images/men.png"),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "Name",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Fuel Leaking",
-                        style: TextStyle(fontSize: 17),
-                      ),
-                      Text(
-                        "Date",
-                        style: TextStyle(fontSize: 17),
-                      ),
-                      Text(
-                        "Time",
-                        style: TextStyle(fontSize: 17),
-                      ),
-                      Text(
-                        "Place",
-                        style: TextStyle(fontSize: 17),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                ],
+              child: FutureBuilder(
+    future: getData(),
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+
+      if (snapshot.hasError) {
+        return Text("Error:${snapshot.error}");
+      }
+      return Row(
+        children: [
+          SizedBox(
+            width: 20,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 40,
+                backgroundImage: AssetImage("assets/images/men.png"),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                detail?['username'],
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                detail?['work'],
+                style: TextStyle(fontSize: 17),
+              ),
+              Text(
+                detail?['date'],
+                style: TextStyle(fontSize: 17),
+              ),
+              Text(
+                detail?['time'],
+                style: TextStyle(fontSize: 17),
+              ),
+              Text(
+                detail?['location'],
+                style: TextStyle(fontSize: 17),
+              ),
+            ],
+          ),
+          Spacer(),
+        ],
+      );
+    }
               ),
             ),
           ),
@@ -149,6 +192,7 @@ class _mech_statusState extends State<mech_status> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 90),
                         child: TextField(
+                          controller: amountctrl,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -159,19 +203,24 @@ class _mech_statusState extends State<mech_status> {
                       SizedBox(
                         height: 50,
                       ),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: Size(170, 30),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            backgroundColor: Colors.orangeAccent,
-                            foregroundColor: Colors.black,
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            "Submit",
-                            style: TextStyle(fontSize: 20),
-                          ))
+                      SizedBox(
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(170, 30),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              backgroundColor: Colors.orangeAccent,
+                              foregroundColor: Colors.black,
+                            ),
+                            onPressed: () {
+
+                              payment(widget.id);
+                            },
+                            child: Text(
+                              "Submit",
+                              style: TextStyle(fontSize: 20),
+                            )),
+                      )
                     ],
                   )
                 :a==2? Column(children: [
@@ -208,12 +257,18 @@ class _mech_statusState extends State<mech_status> {
                       height: 50,
                       width: 250,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          paymentnotcompleted(widget.id);
+
+                        },
                         child: Text(
                           "Submit",
                           style: TextStyle(color: Colors.black),
                         ),
                         style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2)
+                          ),
                             backgroundColor: Colors.orangeAccent),
                       ),
                     ),
