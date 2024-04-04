@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Service_page extends StatefulWidget {
@@ -54,6 +55,14 @@ class _Service_pageState extends State<Service_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.indigo.shade100,
+        title: Text(
+          "services",
+          style: GoogleFonts.acme(),
+        ),
+        centerTitle: true,
+      ),
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
@@ -61,7 +70,7 @@ class _Service_pageState extends State<Service_page> {
           showDialog(
               context: context,
               builder: (BuildContext context) => AlertDialog(
-                    backgroundColor: Colors.blue.shade200,
+                    backgroundColor: Colors.indigo.shade100,
                     title: Center(
                       child: Text("Add service"),
                     ),
@@ -91,9 +100,9 @@ class _Service_pageState extends State<Service_page> {
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
-                                backgroundColor: Colors.blue,
-                                foregroundColor: Colors.white,
+                                    borderRadius: BorderRadius.circular(5)),
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.black,
                               ),
                               onPressed: () {
                                 Submitservice();
@@ -109,21 +118,16 @@ class _Service_pageState extends State<Service_page> {
                     ),
                   ));
         },
-        child: Icon(size: 50, Icons.add),
+        child: Icon(
+            shadows: [],
+            size: 35, Icons.add),
       ),
-      appBar: AppBar(
-        backgroundColor: Colors.blue.shade300,
-        title: Text(
-          "Services",
-          style: TextStyle(fontSize: 30),
-        ),
-        centerTitle: true,
-      ),
+
       body: Center(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
           child: Card(
-            color: Colors.lightBlue.shade50,
+            color: Colors.indigo.shade50,
             child: FutureBuilder(
                 future: FirebaseFirestore.instance
                     .collection('services')
@@ -152,7 +156,7 @@ class _Service_pageState extends State<Service_page> {
                         return ListTile(
                           title: Text(
                             serv[index]['service'],
-                            style: TextStyle(fontSize: 20),
+                            style:GoogleFonts.acme(),
                           ),
                           trailing: IconButton(
                             onPressed: (){

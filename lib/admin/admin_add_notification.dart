@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 class Admin_add_notification extends StatefulWidget {
   const Admin_add_notification({super.key});
@@ -40,8 +41,8 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
             children: [
               SizedBox(height: 100,),
               Padding(
-                padding: const EdgeInsets.only(right: 275),
-                child: Text("Enter matter",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                padding: const EdgeInsets.only(right: 230),
+                child: Text("Enter matter",style: GoogleFonts.acme()),
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -55,6 +56,7 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                   },
                   decoration: InputDecoration(
                     hintText: "matter",
+                    hintStyle: GoogleFonts.acme(),
 
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -65,8 +67,8 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
               ),
               SizedBox(height: 30,),
               Padding(
-                padding: const EdgeInsets.only(right: 250),
-                child: Text("Enter content",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                padding: const EdgeInsets.only(right: 230),
+                child: Text("Enter content",style: GoogleFonts.acme()),
               ),
               SizedBox(
                 height: 10,
@@ -95,6 +97,7 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                       },
                       decoration: InputDecoration(
                         hintText: "content...",
+                        hintStyle: GoogleFonts.acme(),
 
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -109,18 +112,19 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                 height: 180,
               ),
               SizedBox(
-                  width: 300,
+                  width: 250,
                   child: ElevatedButton(onPressed: (){
                     submit();
                     ScaffoldMessenger.of(context).showSnackBar(_bar);
                     // Navigator.pop(context);
 
-                  }, child: Text("Submit",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                  }, child: Text("Submit",style: GoogleFonts.abel()),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)
+                        borderRadius: BorderRadius.circular(6)
                       ),
-                      backgroundColor: Colors.orangeAccent
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.indigo.shade200
                     ),
 
                   ),

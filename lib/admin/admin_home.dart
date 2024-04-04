@@ -30,7 +30,9 @@ class _Admin_homeState extends State<Admin_home> {
             backgroundImage: ExactAssetImage("assets/images/person.png"),
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(items: [
+        bottomNavigationBar: BottomNavigationBar(
+
+            items: [
           BottomNavigationBarItem(
             label: "Home",
             icon: Icon(Icons.home),

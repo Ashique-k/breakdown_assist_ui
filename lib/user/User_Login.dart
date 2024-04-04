@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'User_home.dart';
@@ -28,6 +29,7 @@ class _USER_LOGINState extends State<USER_LOGIN> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Form(
           key: _formkey,
@@ -38,12 +40,17 @@ class _USER_LOGINState extends State<USER_LOGIN> {
                 height: 90,
               ),
               SizedBox(
-                  width: 150,
-                  height: 150,
-                  child: Image.asset("assets/images/breakdowncar.jpg")),
+                  width: 250,
+                  height: 250,
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      "assets/images/breakdowncar.jpg")),
+              SizedBox(
+                height: 4,
+              ),
               Text(
-                "LOGIN",
-                style: TextStyle(fontSize: 15),
+                "USER LOGIN",
+                style: GoogleFonts.acme(),
               ),
               SizedBox(
                 height: 10,
@@ -52,7 +59,7 @@ class _USER_LOGINState extends State<USER_LOGIN> {
                 padding: const EdgeInsets.only(right: 240),
                 child: Text(
                   "Enter Username",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: GoogleFonts.acme(),
                 ),
               ),
               Padding(
@@ -68,6 +75,7 @@ class _USER_LOGINState extends State<USER_LOGIN> {
                   },
                   decoration: InputDecoration(
                     hintText: "Username",
+                    hintStyle: GoogleFonts.acme(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8)),
                   ),
@@ -80,7 +88,7 @@ class _USER_LOGINState extends State<USER_LOGIN> {
                 padding: const EdgeInsets.only(right: 240),
                 child: Text(
                   "Enter Password",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: GoogleFonts.acme(),
                 ),
               ),
               Padding(
@@ -97,6 +105,7 @@ class _USER_LOGINState extends State<USER_LOGIN> {
                   },
                   decoration: InputDecoration(
                     hintText: "Password",
+                    hintStyle: GoogleFonts.acme(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8)),
                   ),
@@ -105,7 +114,7 @@ class _USER_LOGINState extends State<USER_LOGIN> {
               SizedBox(
                 height: 5,
               ),
-              TextButton(onPressed: () {}, child: Text("Forgetten Password?")),
+              TextButton(onPressed: () {}, child: Text("Forgetten Password?",style: GoogleFonts.acme(),)),
               SizedBox(
                 height: 10,
               ),
@@ -123,21 +132,30 @@ class _USER_LOGINState extends State<USER_LOGIN> {
                       // );
                     }
                   },
-                  child: Text("Login"),
+                  child: Text("Login",style: GoogleFonts.aBeeZee()),
                   style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                      ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6)
+                          ),
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.indigo.shade200),
+
+
+                    
+                  
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account"),
+                  Text("Don't have an account",style: GoogleFonts.acme(),),
                   SizedBox(
                     width: 5,
                   ),
                   TextButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => USER_SIGNIN()),
@@ -145,8 +163,9 @@ class _USER_LOGINState extends State<USER_LOGIN> {
                       },
                       child: Text(
                         "Sign up?",
-                        style: TextStyle(color: Colors.orangeAccent),
-                      ))
+                        style: GoogleFonts.acme(),
+                      ),
+                  )
                 ],
               )
             ],

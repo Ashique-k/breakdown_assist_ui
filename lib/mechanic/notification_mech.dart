@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 class Nofification_Mech extends StatefulWidget {
   const Nofification_Mech({super.key});
 
@@ -14,8 +15,8 @@ class _Nofification_MechState extends State<Nofification_Mech> {
 
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.orangeAccent,
-          title: Text("Notification",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+          backgroundColor: Colors.indigo.shade200,
+          title: Text("Notification",style: GoogleFonts.acme()),
           centerTitle: true,
         ),
         body: FutureBuilder(
@@ -66,22 +67,30 @@ class _Nofification_MechState extends State<Nofification_Mech> {
                            crossAxisAlignment: CrossAxisAlignment.start,
                            children: [
 
-                             Text(_notify[index]["matter"]),
-                             Text(_notify[index]["content"]),
+                             Text(_notify[index]["matter"],
+                             style: GoogleFonts.acme(),),
+                             Text(_notify[index]["content"],
+                             style: GoogleFonts.aclonica(),
+                             ),
                            ],
                          ),
                           SizedBox(
                             width: 50,
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
-                            child: Text(_notify[index]["date"]),
+                            padding: const EdgeInsets.fromLTRB(50, 20, 0, 0),
+                            child: Text(_notify[index]["date"],
+                            style: GoogleFonts.acme(),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(255, 20, 0, 0),
-                        child: Text(_notify[index]["time"]),
+                        padding: const EdgeInsets.fromLTRB(230, 20, 0, 0),
+                        child: Text(_notify[index]["time"],
+
+                        style: GoogleFonts.acme(),
+                        ),
                       ),
                     ],
                   ),

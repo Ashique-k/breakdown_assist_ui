@@ -2,6 +2,7 @@
 import 'package:breakdown_assist/user/user_mechanic_details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
  class USER_MECHANIC extends StatefulWidget {
    const USER_MECHANIC({super.key});
 
@@ -26,7 +27,7 @@ import 'package:flutter/material.dart';
 
                Container(
                  height: 850,
-                 width: 470,
+
                  child: FutureBuilder(
                    future: FirebaseFirestore.instance.collection('mechsignup').where('status',isEqualTo: 1).get(),
                    builder: (context,snapshot) {
@@ -58,85 +59,77 @@ import 'package:flutter/material.dart';
                                    MaterialPageRoute(builder: (context) => User_Mech_Detail(id: mech[index].id,)),
                                  );
                                },
-                               child: Container(
-                                 decoration: BoxDecoration(
-                                   color: Colors.orange.shade50
-                                 ),
+                               child: Padding(
+                                 padding: const EdgeInsets.all(8.0),
+                                 child: Card(
+                                   color: Colors.indigo.shade50,
 
-                                 height: 100,
-                                 width: 200,
+                                   child: Row(
 
-
-                                 child: Row(
-
-                                   mainAxisAlignment: MainAxisAlignment.start,
-                                   crossAxisAlignment: CrossAxisAlignment.center,
+                                     mainAxisAlignment: MainAxisAlignment.start,
+                                     crossAxisAlignment: CrossAxisAlignment.center,
 
 
-                                   children: [
-                                     SizedBox(
-                                         height: 70,
-                                         width: 70,
-                                         child: Column(
-                                           mainAxisAlignment: MainAxisAlignment
-                                               .center,
-                                           crossAxisAlignment: CrossAxisAlignment
-                                               .center,
-                                           children: [
-                                             CircleAvatar(
-                                               backgroundImage: AssetImage(
-                                                   "assets/images/men.png"),
-                                               radius: 25,
-                                             ),
-                                             Row(
-                                               children: [
-                                                 SizedBox(
-                                                   width:10 ,
-                                                 ),
-                                                 Text(mech[index]['username'], style: TextStyle(
-                                                     fontSize: 12,
-                                                     fontWeight: FontWeight.bold,
-                                                     color: Colors.black),),
-                                               ],
-                                             )
-                                           ],
-                                         )),
-                                     SizedBox(
-                                       width: 30,
-                                     ),
-                                     Column(
-                                       mainAxisAlignment: MainAxisAlignment
-                                           .center,
-                                       crossAxisAlignment: CrossAxisAlignment
-                                           .center,
-                                       children: [
-                                         Text(mech[index]['experience'],
-                                           style: TextStyle(
-                                               fontWeight: FontWeight.bold),),
-                                         Text("Fuel leaking", style: TextStyle(
-                                             fontWeight: FontWeight.bold),),
+                                     children: [
+                                       SizedBox(
+                                           height: 70,
+                                           width: 70,
+                                           child: Column(
+                                             mainAxisAlignment: MainAxisAlignment
+                                                 .center,
+                                             crossAxisAlignment: CrossAxisAlignment
+                                                 .center,
+                                             children: [
+                                               CircleAvatar(
+                                                 backgroundImage: AssetImage(
+                                                     "assets/images/men.png"),
+                                                 radius: 20,
+                                               ),
+                                               Row(
+                                                 children: [
+                                                   SizedBox(
+                                                     width:10 ,
+                                                   ),
+                                                   Text(mech[index]['username'], style: GoogleFonts.acme())
+                                                 ],
+                                               )
+                                             ],
+                                           )),
+                                       SizedBox(
+                                         width: 30,
+                                       ),
+                                       Column(
+                                         mainAxisAlignment: MainAxisAlignment
+                                             .center,
+                                         crossAxisAlignment: CrossAxisAlignment
+                                             .center,
+                                         children: [
+                                           Text(mech[index]['experience'],
+                                             style: GoogleFonts.acme()),
+                                           Text("Fuel leaking", style: GoogleFonts.acme()),
 
-                                         Padding(
-                                           padding: const EdgeInsets.only(
-                                               left: 20),
-                                           child: ElevatedButton(onPressed: () {},
-                                             child: Text("Available"),
-                                             style: ElevatedButton.styleFrom(
-                                               foregroundColor: Colors.white,
-                                                 shape: RoundedRectangleBorder(
-                                                     borderRadius: BorderRadius
-                                                         .circular(2)
-                                                 ),
-                                                 backgroundColor: Colors.green
+                                           Padding(
+                                             padding: const EdgeInsets.only(
+                                                 left: 20),
+                                             child: ElevatedButton(onPressed: () {},
+                                               child: Text("Available"),
+                                               style: ElevatedButton.styleFrom(
+                                                 foregroundColor: Colors.white,
+                                                   shape: RoundedRectangleBorder(
+                                                       borderRadius: BorderRadius
+                                                           .circular(2)
+                                                   ),
+                                                   backgroundColor: Colors.green
+                                               ),
                                              ),
                                            ),
-                                         ),
-                                       ],
-                                     )
-                                   ],
+                                         ],
+                                       )
+                                     ],
+
+                                   ),
 
                                  ),
-
                                ),
                              );
                          }

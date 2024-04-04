@@ -68,10 +68,14 @@ class _Admin_UserState extends State<Admin_User> {
                         SizedBox(
                           height: 60,
                         ),
+                        user?['path']==''?
                         CircleAvatar(
                           radius: 60,
-                          backgroundImage:
-                              ExactAssetImage("assets/images/men.png"),
+                          backgroundImage: NetworkImage(user!['path']),
+                        ):
+                        CircleAvatar(
+                          radius: 60,
+                          backgroundImage: AssetImage("assets/images/person.png"),
                         ),
                         SizedBox(
                           height: 30,

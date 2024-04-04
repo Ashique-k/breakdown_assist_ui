@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,14 +32,9 @@ class _User_Mech_DetailState extends State<User_Mech_Detail> {
 
   final date = DateTime.now();
   TimeOfDay time = TimeOfDay.now();
-  String dropdownvalue = 'engine repair';
+  String ?dropdownvalue;
 
-  var items = [
-    'fuel leaking',
-    'Ac repairing',
-    'engine oil change',
-    'engine repair',
-  ];
+
   DocumentSnapshot? mech;
 
   getfirebase() async {
@@ -71,16 +67,14 @@ class _User_Mech_DetailState extends State<User_Mech_Detail> {
       "time": time.format(context),
       "date": DateFormat('dd/MM/yyyy').format(date),
       "userprofile": user?['path'],
-      // "mechprofile":mech?['path'],
+      "mechprofile": mech?["path"],
       "mechusername": mech?['username'],
       "username": user!['username'],
       "experience": mech!['experience'],
-
-
       "location": locationctrl.text,
       "mechphone": mech!['phone'],
       "mechid": widget.id,
-      "userid":ID,
+      "userid": ID,
     });
     print("done");
   }
@@ -94,7 +88,7 @@ class _User_Mech_DetailState extends State<User_Mech_Detail> {
           "SERVICE",
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.indigoAccent.shade100,
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -125,15 +119,21 @@ class _User_Mech_DetailState extends State<User_Mech_Detail> {
                     SizedBox(
                       height: 4,
                     ),
-                    Text(mech?['username']),
+                    Text(mech?['username'],
+                    style: GoogleFonts.acme(),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(mech?['phone']),
+                    Text(mech?['phone'],
+                    style: GoogleFonts.acme(),
+                    ),
                     SizedBox(
                       height: 5,
                     ),
-                    Text(mech?['experience']),
+                    Text(mech?['experience'],
+                    style: GoogleFonts.acme(),
+                    ),
                     SizedBox(
                       height: 4,
                     ),
@@ -151,36 +151,84 @@ class _User_Mech_DetailState extends State<User_Mech_Detail> {
                       height: 15,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 150),
+                      padding: const EdgeInsets.only(right: 200),
                       child: Text(
                         "Add Needed Service",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                        style:GoogleFonts.acme()
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    SizedBox(
-                      height: 60,
-                      width: 260,
-                      child: DropdownButton(
-                        value: dropdownvalue,
-                        icon: const Icon(Icons.keyboard_arrow_down),
-                        items: items.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            dropdownvalue = newValue!;
-                            print(dropdownvalue);
-                          });
-                        },
-                      ),
+                    Row(
+                      children: [
+                        StreamBuilder<QuerySnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('services')
+                              .where("mechid", isEqualTo: widget.id)
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const SizedBox();
+                            } else if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            } else {
+                              List<String> tradeList = snapshot.data!.docs
+                                  .map((DocumentSnapshot document) =>
+                                      document['service'].toString())
+                                  .toList();
+
+                              return Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Colors.black54),
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: DropdownButton<String>(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 35, vertical: 3),
+                                      underline: const SizedBox(),
+                                      borderRadius: BorderRadius.circular(10),
+                                      hint:  Text(
+                                          "choose your needed service",
+                                      style: GoogleFonts.acme(),
+                                      ),
+                                      value: dropdownvalue,
+                                      // Set initial value if needed
+                                      onChanged: (String? newValue) {
+                                        setState(() {
+                                          dropdownvalue = newValue!;
+                                          print(dropdownvalue);
+                                        });
+                                      },
+
+                                      items: tradeList
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) =>
+                                                  DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(
+                                                        style: GoogleFonts.acme(),
+                                                        value),
+                                                  ))
+                                          .toList(),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        )
+                      ],
                     ),
+
+//
                     SizedBox(
                       height: 20,
                     ),
@@ -188,29 +236,31 @@ class _User_Mech_DetailState extends State<User_Mech_Detail> {
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 250),
-                      child: Text("Place"),
+                      padding: const EdgeInsets.only(right: 220),
+                      child: Text("Place",style: GoogleFonts.acme(),),
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     Container(
                       height: 50,
-                      width: 300,
+                      width: 270,
                       child: TextFormField(
+                        maxLines: 5,
                         controller: locationctrl,
                         decoration: InputDecoration(
                             hintText: 'location',
+                            hintStyle: GoogleFonts.acme(),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10))),
                       ),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 20,
                     ),
                     SizedBox(
                       height: 50,
-                      width: 300,
+                      width: 250,
                       child: ElevatedButton(
                         onPressed: () {
                           mechreq();
@@ -218,13 +268,16 @@ class _User_Mech_DetailState extends State<User_Mech_Detail> {
                         },
                         child: Text(
                           "Submit",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
+                          style: GoogleFonts.abel()
                         ),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6)
+                          ),
+                          shadowColor: Colors.blueGrey.shade50,
+                          foregroundColor: Colors.white,
+                            backgroundColor: Colors.indigoAccent.shade100),
+
                       ),
                     )
                   ],

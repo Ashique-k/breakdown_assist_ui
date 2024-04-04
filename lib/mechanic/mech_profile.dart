@@ -88,6 +88,7 @@ DocumentSnapshot ? mech;
             children: [
               mech?['path']==''?
                   CircleAvatar(
+                    radius: 70,
                     backgroundImage: ExactAssetImage("assets/images/person.png"),
                   ):
               CircleAvatar(
@@ -214,11 +215,12 @@ DocumentSnapshot ? mech;
                   MaterialPageRoute(builder: (context) => MECH_HOME()),
                 );
 
-                }, child: Text("done"),
+                }, child: Text("Done",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
+                  backgroundColor: Colors.indigo.shade200,
+                  foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)
+                    borderRadius: BorderRadius.circular(6)
                   ),
                 ),
                 ),

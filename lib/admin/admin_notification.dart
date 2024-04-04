@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'admin_add_notification.dart';
 class Admin_notification extends StatefulWidget {
@@ -15,10 +16,10 @@ class _Admin_notificationState extends State<Admin_notification> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.orange.shade200,
+        backgroundColor: Colors.white,
         elevation: 5,
         onPressed:(){
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => Admin_add_notification()),
           );
@@ -51,38 +52,32 @@ class _Admin_notificationState extends State<Admin_notification> {
                     final notify = snapshot.data?.docs ?? [];
 
 
-                    return Container(
-                      height: 50,
-                      width: 150,
-                      color: Colors.orange.shade50,
+                    return Card(
 
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)
-                        ),
+                      color: Colors.indigo.shade50,
 
-                        child: ListView.separated(
-                            separatorBuilder: (context, index) =>
-                                Divider(
-                                  color: Colors.white,
+                      child: ListView.separated(
+                          separatorBuilder: (context, index) =>
+                              Divider(
+                                color: Colors.white,
 
 
-                                  thickness: 3,
-                                  height: 50,
-                                ),
-                            itemCount: notify.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return
-                                ListTile(
-                                  title: Text(notify[index]["matter"],
-                                    style: TextStyle(fontWeight: FontWeight.bold),),
-                                  subtitle: Text(
-                                    notify[index]["content"], style: TextStyle(fontSize: 15),),
-                                );
-                            }
+
+                                thickness: 3,
+                                height: 50,
+                              ),
+                          itemCount: notify.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return
+                              ListTile(
+                                title: Text(notify[index]["matter"],
+                                  style: GoogleFonts.acme()),
+                                subtitle: Text(
+                                  notify[index]["content"], style: GoogleFonts.aclonica()),
+                              );
+                          }
 
 
-                        ),
                       ),
                     );
                   }

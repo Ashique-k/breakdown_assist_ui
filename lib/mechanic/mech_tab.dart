@@ -1,5 +1,5 @@
-import 'package:breakdown_assist/mechanic/Mech_requested_home.dart';
-import 'package:breakdown_assist/mechanic/Mech_service_home.dart';
+import 'package:breakdown_assist/mechanic/Mech_accepted_home.dart';
+import 'package:breakdown_assist/mechanic/Mech_request_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,8 +25,9 @@ class _MECH_TABState extends State<MECH_TAB> {
           children: [
 
             Card(
-              color: Colors.orange.shade200,
+              color: Colors.indigo.shade100,
               child: TabBar(
+
 
                 indicator: BoxDecoration(
                   color: Colors.blue.shade200,

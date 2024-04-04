@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'User_Login.dart';
 
@@ -43,6 +44,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Form(
           key: _formkey,
@@ -50,20 +52,22 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
             SizedBox(
-            height: 90,
+            height: 50,
         
           ),
           SizedBox(
-              width: 150,
-              height: 150,
-              child: Image.asset("assets/images/breakdowncar.jpg")),
-          Text("SIGN UP",style: TextStyle(fontSize: 15),),
+              width: 200,
+              height: 200,
+              child: Image.asset(
+                  fit: BoxFit.fill,
+                  "assets/images/breakdowncar.jpg")),
+          Text(" USER SIGN UP",style:GoogleFonts.acme()),
           SizedBox(
             height: 10,
           ),
           Padding(
             padding: const EdgeInsets.only(right: 240),
-            child: Text("Enter Username",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
+            child: Text("Enter Username",style:GoogleFonts.acme()),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -77,6 +81,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
               },
               decoration: InputDecoration(
                 hintText: "Username",
+                hintStyle: GoogleFonts.acme(),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8)
                 ),
@@ -89,7 +94,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
           ),
               Padding(
                 padding: const EdgeInsets.only(right: 240),
-                child: Text("Enter Location",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
+                child: Text("Enter Location",style: GoogleFonts.acme()),
               ),
               SizedBox(
                 height: 10,
@@ -106,6 +111,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
                   },
                   decoration: InputDecoration(
                     hintText: "location",
+                    hintStyle: GoogleFonts.acme(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8)
                     ),
@@ -117,8 +123,8 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
 
               ),
           Padding(
-            padding: const EdgeInsets.only(right: 200),
-            child: Text("Enter Your Phone number",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
+            padding: const EdgeInsets.only(right: 180),
+            child: Text("Enter Your Phone number",style: GoogleFonts.acme()),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -132,6 +138,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
               },
               decoration: InputDecoration(
                 hintText: "Phone number",
+                hintStyle: GoogleFonts.acme(),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8)
                 ),
@@ -140,7 +147,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
           ),
               Padding(
                 padding: const EdgeInsets.only(right: 240),
-                child: Text("Enter Your Email",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
+                child: Text("Enter Your Email",style: GoogleFonts.acme()),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -154,6 +161,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
                   },
                   decoration: InputDecoration(
                     hintText: "Email",
+                    hintStyle: GoogleFonts.acme(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8)
                     ),
@@ -166,7 +174,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 200),
-                child: Text("Enter your Password",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
+                child: Text("Enter your Password",style: GoogleFonts.acme()),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -180,6 +188,7 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
                   },
                   decoration: InputDecoration(
                     hintText: "Password",
+                    hintStyle: GoogleFonts.acme(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8)
                     ),
@@ -201,9 +210,13 @@ class _USER_SIGNINState extends State<USER_SIGNIN> {
               }
         
         
-                }, child: Text("SIGN UP",style: TextStyle(color: Colors.black),),
+                }, child: Text("SIGN UP",style: GoogleFonts.abel()),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orangeAccent
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5)
+                  ),
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.indigoAccent.shade100
                 ),
                 ),
               )

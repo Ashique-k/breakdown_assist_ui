@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MECH_RATING extends StatefulWidget {
@@ -32,7 +33,7 @@ class _MECH_RATINGState extends State<MECH_RATING> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: Colors.indigo.shade100,
         title: Text(
           "Rating",
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -70,31 +71,29 @@ class _MECH_RATINGState extends State<MECH_RATING> {
       return ListView.separated(
           separatorBuilder: (context, index) =>
               Divider(
-                indent: 13,
-                endIndent: 40,
-                color: Colors.white,
-                thickness: 3,
-                height: 30,
+
+
+                height: 6,
               ),
           itemCount:mech.length,
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              color: Colors.blue.shade50,
-              height: 150,
-              width: 150,
+            return Card(
+              color: Colors.indigo.shade50,
+
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 // crossAxisAlignment: CrossAxisAlignment.center,
 
                 children: [
-                  SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: Column(
-                      children: [
-                        Image.asset("assets/images/men.png"),
-                      ],
-                    ),
+                  Column(
+                    children: [
+                      CircleAvatar(
+
+
+                        backgroundImage: ExactAssetImage("assets/images/men.png"),
+                        radius: 35,
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 20,
@@ -110,23 +109,19 @@ class _MECH_RATINGState extends State<MECH_RATING> {
                             ),
                             Text(
                               mech[index]['work'],
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold),
+                              style: GoogleFonts.acme(),
                             ),
                             Text(
                               mech[index]['date'],
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold),
+                              style: GoogleFonts.acme(),
                             ),
                             Text(
                               mech[index]['time'],
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold),
+                              style: GoogleFonts.acme(),
                             ),
                             Text(
                               mech[index]['location'],
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold),
+                              style: GoogleFonts.acme(),
                             ),
                           ],
                         ),
@@ -139,7 +134,7 @@ class _MECH_RATINGState extends State<MECH_RATING> {
                           SizedBox(
                             height: 5,
                           ),
-                          Text("Rating"),
+                          Text("Rating",style: GoogleFonts.acme(),),
                           SizedBox(
                             height: 15,
                           ),

@@ -42,6 +42,7 @@ dependencies:
   shared_preferences: ^2.2.2
   firebase_storage: ^11.6.11
   image_picker: ^1.0.7
+  google_fonts: ^6.2.1
 
   intl:
 
@@ -67,9 +68,6 @@ dev_dependencies:
 flutter:
   assets:
     - assets/anmie/
-    - assets/images/
-    - assets/images/
-    - assets/images/
     - assets/images/
 
   # The following line ensures that the Material Icons font is

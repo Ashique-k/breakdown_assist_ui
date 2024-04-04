@@ -2,6 +2,7 @@ import 'package:breakdown_assist/mechanic/Mech_Home.dart';
 import 'package:breakdown_assist/mechanic/Mech_Sign.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class MECH_LOGIN extends StatefulWidget {
   const MECH_LOGIN({super.key});
@@ -27,6 +28,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Form(
         key: _formkey,
         child: SingleChildScrollView(
@@ -38,16 +40,25 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                   height: 40,
                 ),
                 SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: Image.asset("assets/images/breakdowncar.jpg")),
+                    height: 250,
+                    width: 250,
+                    child: Image.asset(
+                        fit: BoxFit.fill,
+                        "assets/images/breakdowncar.jpg")),
                 SizedBox(
                   height: 50,
                 ),
-                Text("LOGIN",style: TextStyle(fontSize: 20,color: Colors.black),),
+                Text("MECH LOGIN",style: GoogleFonts.acme()),
                 SizedBox(
                   height: 20,
 
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 220),
+                  child: Text("enter your name",style: GoogleFonts.acme(),),
+                ),
+                SizedBox(
+                  height: 5,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -61,7 +72,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                     },
                     decoration: InputDecoration(
                       hintText:"Enter Username",
-                      labelText: "Enter name",
+                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       ),
@@ -70,9 +81,20 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
 
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 225),
+                  child: Text("enter your password",style: GoogleFonts.acme(),),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    obscureText: true,
                     controller: passwordctrl,
                     validator: (value) {
                       if (value == null || value.isEmpty) {   // Validation Logic
@@ -82,7 +104,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                     },
                     decoration: InputDecoration(
                       hintText:"Enter Your Password",
-                      labelText: "Enter Password",
+                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       ),
@@ -93,7 +115,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 150),
-                  child: TextButton(onPressed: (){}, child: Text("Forgotten Password?",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),)),
+                  child: TextButton(onPressed: (){}, child: Text("Forgotten Password?",style: GoogleFonts.acme())),
                 ),
                 SizedBox(
                   height: 20,
@@ -105,20 +127,18 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                   child: ElevatedButton(onPressed: (){
                     if(_formkey.currentState!.validate()) {
                       mechlogin();
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => MECH_HOME()),
-                      // );
+
 
                     }
 
 
-                  }, child: Text("Login",style: TextStyle(fontSize: 20,color: Colors.black),),
+                  }, child: Text("Login",style: GoogleFonts.abel()),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      backgroundColor: Colors.orangeAccent,
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.indigo.shade200,
 
                     ),
                   ),
@@ -126,7 +146,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't haven't account"),
+                    Text("Don't haven't account",style: GoogleFonts.acme(),),
                     SizedBox(
                       width: 2,
                     ),
@@ -139,7 +159,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
 
 
 
-                    }, child: Text("Sign Up ?"))
+                    }, child: Text("Sign Up ?",style: GoogleFonts.acme(),))
                   ],
                 ),
 
@@ -157,7 +177,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
   void mechlogin()async{
     final mech= await FirebaseFirestore.instance.collection('mechsignup').where('email',isEqualTo: usernamectrl.text)
         .where('password',isEqualTo: passwordctrl.text)
-        .where('status',isEqualTo: 0)
+        .where('status',isEqualTo: 1)
         .get();
     if (mech.docs.isNotEmpty){
       id = mech.docs[0].id;

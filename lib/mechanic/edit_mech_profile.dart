@@ -137,22 +137,7 @@ class _MECH_PROFILEState extends State<MECH_PROFILE> {
               }, icon: Icon(Icons.camera_alt)),
 
 
-              //
-              // Image.asset("assets/images/person.png")),
 
-
-
-            // TextFormField(
-            //   controller: namectrl,
-            //
-            //   decoration: InputDecoration(
-            //     hintText: "Name",
-            //     labelText: "enter your name",
-            //     border: OutlineInputBorder(
-            //         borderRadius: BorderRadius.circular(10)
-            //     ),
-            //   ),
-            // ),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -269,9 +254,10 @@ class _MECH_PROFILEState extends State<MECH_PROFILE> {
 
               }, child: Text("Submit"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
+                  backgroundColor: Colors.indigo.shade200,
+                  foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
+                      borderRadius: BorderRadius.circular(6)
                   ),
                 ),
               ),

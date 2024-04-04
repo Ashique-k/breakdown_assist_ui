@@ -26,29 +26,19 @@ class _HomeState extends State<Home> {
               height: 20,
             ),
 
-            TabBar(tabs: [Container(
-              height: 40,
-              width: 200,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)
-                ),
-                color: Colors.orange.shade200,
-                child: Tab(child: Text("User"),
-                ),
+            Card(
+              color: Colors.indigo.shade100,
+              child: TabBar(
+                  indicator: BoxDecoration(
+                    color: Colors.blue.shade200,
+                    shape: BoxShape.rectangle,
+                  ),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  tabs: [Tab(child: Text("User"),
               ),
+                Tab(child:Text("Mechanic") ,)
+              ]),
             ),
-              Container(
-                height: 40,
-                width: 200,
-                child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)
-                    ),
-                    color: Colors.orange.shade200,
-                    child: Tab(child:Text("Mechanic") ,)),
-              )
-            ]),
             Expanded(
               child: TabBarView(children: [
                 Admin_home_user(),

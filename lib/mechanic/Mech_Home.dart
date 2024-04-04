@@ -58,7 +58,12 @@ class _MECH_HOMEState extends State<MECH_HOME> {
             }, icon: Icon(Icons.notification_add_outlined))
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(items: [
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.indigo.shade100,
+            selectedIconTheme: IconThemeData(
+              color: Colors.indigo,
+            ),
+            items: [
           BottomNavigationBarItem(
             label: "Request",
             icon: Icon(Icons.person_search),

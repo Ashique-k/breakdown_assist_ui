@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'User_Mechanic.dart';
 import 'User_Request.dart';
@@ -22,7 +23,7 @@ class _USER_HOMEState extends State<USER_HOME> {
 
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.orange.shade200,
+            backgroundColor: Colors.indigo.shade200,
             leading: InkWell(
               onTap: (){
       Navigator.push(
@@ -42,12 +43,13 @@ class _USER_HOMEState extends State<USER_HOME> {
                 borderRadius: BorderRadius.circular(15)
               ),
               height: 50,
-              width: 230,
+              width: 200,
               child: TextField(
 
                 decoration: InputDecoration(
 
                   hintText: "Search",
+                  hintStyle: GoogleFonts.abhayaLibre(),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0)
                   ),
@@ -67,40 +69,27 @@ class _USER_HOMEState extends State<USER_HOME> {
           ),
 
 
-          bottomSheet: TabBar(
+          bottomSheet: Card(
 
-
-              tabs: [
-            Container(
-              height: 40,
-              width: 200,
-              child: Card(
-                color: Colors.orange.shade200,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)
-                ),
-                child: Tab(
-                  child: Text("Mechanic",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-
-                ),
+            child: TabBar(
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicator: BoxDecoration(
+                color: Colors.indigoAccent.shade100,
+                borderRadius: BorderRadius.circular(10)
               ),
-            ),
-            Container(
-              height: 40,
-              width: 200,
-              child: Card(
-                color: Colors.orange.shade200,
-                borderOnForeground:true,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)
-                ),
-                child: Tab(
 
-                  child: Text("Request",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-                ),
+
+                tabs: [
+              Tab(
+                child: Text("Mechanic",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+
               ),
-            )
-          ]),
+              Tab(
+
+                child: Text("Request",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+              )
+            ]),
+          ),
           body: TabBarView(children: [
             USER_MECHANIC(),
             USER_REQUEST(),

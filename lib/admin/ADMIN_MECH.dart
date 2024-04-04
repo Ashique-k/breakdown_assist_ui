@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Admin_mech extends StatefulWidget {
   const Admin_mech({super.key, required this.id});
@@ -78,16 +79,14 @@ class _Admin_mechState extends State<Admin_mech> {
                         ),
                         Text(
                           mech?['username'],
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),
+                          style: GoogleFonts.acme()
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
                           "location",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),
+                          style: GoogleFonts.acme(),
                         ),
                         SizedBox(
                           height: 20,
@@ -105,6 +104,7 @@ class _Admin_mechState extends State<Admin_mech> {
                             },
                             decoration: InputDecoration(
                               hintText: mech?['username'],
+                              hintStyle: GoogleFonts.acme(),
                               border: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(8.0)),
@@ -124,6 +124,7 @@ class _Admin_mechState extends State<Admin_mech> {
                             },
                             decoration: InputDecoration(
                                 hintText: "phone number",
+                                hintStyle: GoogleFonts.acme(),
 
                                 border: OutlineInputBorder(
                                   borderRadius:
@@ -143,6 +144,7 @@ class _Admin_mechState extends State<Admin_mech> {
                             },
                             decoration: InputDecoration(
                                 hintText: "mail",
+                                hintStyle: GoogleFonts.acme(),
 
                                 border: OutlineInputBorder(
                                   borderRadius:
@@ -162,6 +164,7 @@ class _Admin_mechState extends State<Admin_mech> {
                             },
                             decoration: InputDecoration(
                                 hintText: mech?['experience'],
+                                hintStyle: GoogleFonts.acme(),
 
                                 border: OutlineInputBorder(
                                   borderRadius:
@@ -181,6 +184,7 @@ class _Admin_mechState extends State<Admin_mech> {
                             },
                             decoration: InputDecoration(
                                 hintText: mech?['shop'],
+                                hintStyle: GoogleFonts.acme(),
 
                                 border: OutlineInputBorder(
                                   borderRadius:
@@ -200,6 +204,7 @@ class _Admin_mechState extends State<Admin_mech> {
                             },
                             decoration: InputDecoration(
                                 hintText: "location",
+                                hintStyle: GoogleFonts.acme(),
 
                                 border: OutlineInputBorder(
                                   borderRadius:
@@ -212,31 +217,39 @@ class _Admin_mechState extends State<Admin_mech> {
                        mech!['status']==0? Row(
                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                accept(widget.id);
-                              },
-                              child: Text("Accept"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5)),
+                            SizedBox(
+                              height: 50,
+                              width: 250,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  accept(widget.id);
+                                },
+                                child: Text("Accept"),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                ),
                               ),
                             ),
                             SizedBox(
                               width: 5,
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                rejects(widget.id);
-                              },
-                              child: Text("Reject"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red,
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5)),
+                            SizedBox(
+                              height: 50,
+                              width: 250,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  rejects(widget.id);
+                                },
+                                child: Text("Reject"),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red,
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                ),
                               ),
                             ),
                           ]

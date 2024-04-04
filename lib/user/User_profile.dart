@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class USER_PROFILE extends StatefulWidget {
@@ -108,6 +109,7 @@ class _USER_PROFILEState extends State<USER_PROFILE> {
                 user?['path']==""?
 
                 CircleAvatar(
+                  radius: 70,
                   backgroundImage: ExactAssetImage("assets/images/person.png"),
 
                 ):
@@ -120,14 +122,14 @@ class _USER_PROFILEState extends State<USER_PROFILE> {
                   pickimage();
 
                 }, icon: Icon(Icons.camera_alt)),
-                Text(user?['username']),
+                Text(user?['username'],
+                style: GoogleFonts.acme(),),
                 SizedBox(
                   height: 25,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 200),
-                  child: Text("Enter Your Name", style: TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold),),
+                  padding: const EdgeInsets.only(right: 220),
+                  child: Text("Enter Your Name", style: GoogleFonts.acme()),
                 ),
                 SizedBox(
                   height: 3,
@@ -138,6 +140,7 @@ class _USER_PROFILEState extends State<USER_PROFILE> {
                     readOnly: true,
                     decoration: InputDecoration(
                         hintText: user?['username'],
+                        hintStyle: GoogleFonts.acme(),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)
                         )
@@ -145,9 +148,8 @@ class _USER_PROFILEState extends State<USER_PROFILE> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 200),
-                  child: Text("Enter Your Phone ", style: TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold),),
+                  padding: const EdgeInsets.only(right: 220),
+                  child: Text("Enter Your Phone ", style: GoogleFonts.acme()),
                 ),
                 SizedBox(
                   height: 3,
@@ -158,6 +160,7 @@ class _USER_PROFILEState extends State<USER_PROFILE> {
                     readOnly: true,
                     decoration: InputDecoration(
                         hintText: user?['phone'],
+                        hintStyle: GoogleFonts.acme(),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)
                         )
@@ -165,9 +168,8 @@ class _USER_PROFILEState extends State<USER_PROFILE> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 200),
-                  child: Text("Enter Your Email", style: TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold),),
+                  padding: const EdgeInsets.only(right: 220),
+                  child: Text("Enter Your Email", style: GoogleFonts.acme()),
                 ),
                 SizedBox(
                   height: 3,
@@ -178,6 +180,7 @@ class _USER_PROFILEState extends State<USER_PROFILE> {
                     readOnly: true,
                     decoration: InputDecoration(
                         hintText: user?['email'],
+                        hintStyle: GoogleFonts.acme(),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)
                         )
@@ -189,14 +192,18 @@ class _USER_PROFILEState extends State<USER_PROFILE> {
                 ),
                 SizedBox(
                   height: 50,
-                  width: 300,
+                  width: 250,
                   child: ElevatedButton(onPressed: () {
                     Navigator.pop(context);
                   },
                     child: Text(
-                      "Submit", style: TextStyle(color: Colors.black),),
+                      "Submit", style:GoogleFonts.abel(),),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6)
+                      ),
+                      foregroundColor: Colors.white,
+                        backgroundColor: Colors.indigoAccent.shade100
                     ),
                   ),
                 )

@@ -1,6 +1,7 @@
 import 'package:breakdown_assist/mechanic/mech_login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MECH_SIGN_UP extends StatefulWidget {
   const MECH_SIGN_UP({super.key});
@@ -30,7 +31,7 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
       "status":0
     }).then((value) => {
       print("suceess"),
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => MECH_LOGIN()),
       ),
@@ -44,6 +45,7 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Form(
         key: _formkey,
         child: SingleChildScrollView(
@@ -51,17 +53,28 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 50,
+                height: 30,
 
               ),
               SizedBox(
-                  height: 150,
-                  width: 150,
+                  height: 200,
+                  width: 200,
 
                   child: Image.asset("assets/images/breakdowncar.jpg")),
               SizedBox(
                 height: 20,
 
+              ),
+              Text("MECH SIGN UP",style: GoogleFonts.acme(),),
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 200),
+                child: Text("enter your username",style: GoogleFonts.acme(),),
+              ),
+              SizedBox(
+                height: 5,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -75,12 +88,20 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
                   },
                   decoration: InputDecoration(
                     hintText: "Enter username",
+                    hintStyle: GoogleFonts.acme(),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)
                     )
 
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 180),
+                child: Text("enter your phone number",style: GoogleFonts.acme(),),
               ),
               SizedBox(
                 height: 5,
@@ -97,12 +118,20 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
                   },
                   decoration: InputDecoration(
                       hintText: "Enter phone number",
+                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
 
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 220),
+                child: Text("enter your email",style: GoogleFonts.acme(),),
               ),
               SizedBox(
                 height: 5,
@@ -119,12 +148,20 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
                   },
                   decoration: InputDecoration(
                       hintText: "Enter email",
+                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
 
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 200),
+                child: Text("enter your location",style: GoogleFonts.acme(),),
               ),
               SizedBox(
                 height: 5,
@@ -141,12 +178,20 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
                   },
                   decoration: InputDecoration(
                       hintText: "Enter location",
+                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
 
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 200),
+                child: Text("enter your experience",style: GoogleFonts.acme(),),
               ),
               SizedBox(
                 height: 5,
@@ -163,12 +208,20 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
                   },
                   decoration: InputDecoration(
                       hintText: "Enter your experience",
+                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
 
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 200),
+                child: Text("enter your shop name",style: GoogleFonts.acme(),),
               ),
               SizedBox(
                 height: 5,
@@ -185,12 +238,20 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
                   },
                   decoration: InputDecoration(
                       hintText: "Enter your shop name",
+                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
 
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 200),
+                child: Text("enter your password",style: GoogleFonts.acme(),),
               ),
               SizedBox(
                 height: 5,
@@ -207,6 +268,7 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
                   },
                   decoration: InputDecoration(
                       hintText: "Enter your password",
+                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
@@ -219,7 +281,7 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
               ),
               SizedBox(
                  height: 50,
-                  width: 300,
+                  width: 250,
 
                   child: ElevatedButton(onPressed: (){
                     if(_formkey.currentState!.validate()) {
@@ -234,11 +296,12 @@ class _MECH_SIGN_UPState extends State<MECH_SIGN_UP> {
 
                     }
 
-                  }, child: Text("Sign in",style: TextStyle(color: Colors.black),),
+                  }, child: Text("Sign in",style:GoogleFonts.abel()),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orangeAccent,
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.indigoAccent.shade100,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
+                      borderRadius: BorderRadius.circular(5)
                     )
                   ),
 

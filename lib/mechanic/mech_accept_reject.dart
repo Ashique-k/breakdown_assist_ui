@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Accept_reject extends StatefulWidget {
   const Accept_reject({super.key,required this.id});
@@ -42,11 +43,11 @@ class _Accept_rejectState extends State<Accept_reject> {
     return Scaffold(
       body: Center(
         child: Container(
-          height: 550,
+          height: 500,
           width: 330,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.blue.shade200
+              color: Colors.indigo.shade100
           ),
           child: FutureBuilder(
         future: getData(),
@@ -67,12 +68,19 @@ class _Accept_rejectState extends State<Accept_reject> {
           SizedBox(
             height: 5,
           ),
-          CircleAvatar(
-            radius: 50,
-            backgroundImage: AssetImage("assets/images/person.png"),
+          detail!['userprofile'] == ''
+              ? CircleAvatar(
+            radius: 40,
+            backgroundImage: ExactAssetImage(
+                "assets/images/person.png"),
+          )
+              : CircleAvatar(
+            radius: 40,
+            backgroundImage: NetworkImage(
+                detail!['userprofile']),
           ),
           Text(detail?['username'],
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+            style: GoogleFonts.acme()),
           SizedBox(
             height: 60,
           ),
@@ -80,37 +88,37 @@ class _Accept_rejectState extends State<Accept_reject> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Problem", style: TextStyle(fontSize: 20),),
+              Text("Problem", style: GoogleFonts.acme()),
               Text(detail?['work'],
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                style: GoogleFonts.acme()),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Place", style: TextStyle(fontSize: 20),),
-              Text(detail?['location'], style: TextStyle(fontSize: 20),),
+              Text("Place", style: GoogleFonts.acme()),
+              Text(detail?['location'], style: GoogleFonts.acme()),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Date", style: TextStyle(fontSize: 20),),
-              Text(detail?['date'], style: TextStyle(fontSize: 20),),
+              Text("Date", style: GoogleFonts.acme()),
+              Text(detail?['date'], style: GoogleFonts.acme()),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Time", style: TextStyle(fontSize: 20),),
+              Text("Time", style: GoogleFonts.acme()),
 
-              Text(detail?['time'], style: TextStyle(fontSize: 20),),
+              Text(detail?['time'], style: GoogleFonts.acme()),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Contact Number", style: TextStyle(fontSize: 20),),
+              Text("", style: TextStyle(fontSize: 20),),
               Text("", style: TextStyle(fontSize: 20),),
             ],
           ),

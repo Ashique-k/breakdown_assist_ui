@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 class USER_NOTIFICATION extends StatefulWidget {
   const USER_NOTIFICATION({super.key});
 
@@ -14,8 +15,8 @@ class _USER_NOTIFICATIONState extends State<USER_NOTIFICATION> {
 
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.orange.shade200,
-          title: Text("Notification",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+          backgroundColor: Colors.indigoAccent.shade100,
+          title: Text("Notification",style: GoogleFonts.acme()),
           centerTitle: true,
         ),
         body:  FutureBuilder(
@@ -55,12 +56,14 @@ class _USER_NOTIFICATIONState extends State<USER_NOTIFICATION> {
                             Padding(
                               padding: const EdgeInsets.all(15),
                               child: Text(_notify[index]['matter'],
-                                  style: TextStyle(fontSize: 20)),
+                                  style: GoogleFonts.acme()),
                             ),
                             Spacer(),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-                              child: Text(_notify[index]['time']),
+                              child: Text(_notify[index]['time'],
+                              style: GoogleFonts.acme(),
+                              ),
                             )
                           ],
                         ),
@@ -69,12 +72,14 @@ class _USER_NOTIFICATIONState extends State<USER_NOTIFICATION> {
                             Padding(
                               padding: const EdgeInsets.all(15),
                               child: Text(_notify[index]['content'],
-                                  style: TextStyle(fontSize: 20)),
+                                  style: GoogleFonts.aclonica()),
                             ),
                             Spacer(),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-                              child: Text(_notify[index]['date']),
+                              child: Text(_notify[index]['date'],
+                              style: GoogleFonts.acme(),
+                              ),
                             )
                           ],
                         )
