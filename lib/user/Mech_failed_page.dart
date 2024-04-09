@@ -25,6 +25,7 @@ class _MECH_FAILEDState extends State<MECH_FAILED> {
     print('object');
     FirebaseFirestore.instance.collection('Mechreq').doc(id).update({
       'payment': 6,
+      'final':1,
       'rating': rating,
     }).then((value) => Navigator.push(context,
         MaterialPageRoute(builder: (context) => USER_HOME())));

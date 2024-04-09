@@ -42,8 +42,8 @@ class _MECH_TABState extends State<MECH_TAB> {
             ),
             Expanded(
               child: TabBarView(children: [
-                MECH_SERVICE_HOME(),
-                Mechanic_request(),
+                MECH_REQ(),
+                Mechanic_accept(),
 
 
               ]),

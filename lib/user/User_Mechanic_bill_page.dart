@@ -29,6 +29,7 @@ class _USER_MECH_BILL_PAGEState extends State<USER_MECH_BILL_PAGE> {
     print('object');
     FirebaseFirestore.instance.collection('Mechreq').doc(id).update({
       'payment': 5,
+      'final':1,
       'rating': rating,
     }).then((value) => Navigator.push(context,
         MaterialPageRoute(builder: (context) => User_Payment_sucsess())));

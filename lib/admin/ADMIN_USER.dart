@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Admin_User extends StatefulWidget {
   const Admin_User({super.key, required this.id});
@@ -82,16 +83,14 @@ class _Admin_UserState extends State<Admin_User> {
                         ),
                         Text(
                           user?['username'],
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),
+                          style: GoogleFonts.acme(),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
                           user?['location'],
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),
+                          style: GoogleFonts.acme(),
                         ),
                         SizedBox(
                           height: 20,
@@ -100,8 +99,7 @@ class _Admin_UserState extends State<Admin_User> {
                           padding: const EdgeInsets.only(right: 235),
                           child: Text(
                             "Username",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                            style: GoogleFonts.acme(),
                           ),
                         ),
                         Padding(
@@ -117,6 +115,7 @@ class _Admin_UserState extends State<Admin_User> {
                             },
                             decoration: InputDecoration(
                               hintText: user?['username'],
+                              hintStyle: GoogleFonts.acme(),
                               border: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(8.0)),
@@ -131,8 +130,7 @@ class _Admin_UserState extends State<Admin_User> {
                           padding: const EdgeInsets.only(right: 220),
                           child: Text(
                             "Phone number",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                            style: GoogleFonts.acme(),
                           ),
                         ),
                         Padding(
@@ -147,6 +145,7 @@ class _Admin_UserState extends State<Admin_User> {
                             },
                             decoration: InputDecoration(
                                 hintText: user?['phone'],
+                                hintStyle: GoogleFonts.acme(),
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(8.0)),
@@ -160,8 +159,7 @@ class _Admin_UserState extends State<Admin_User> {
                           padding: const EdgeInsets.only(right: 275),
                           child: Text(
                             "Email",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                            style: GoogleFonts.acme(),
                           ),
                         ),
                         Padding(
@@ -176,6 +174,7 @@ class _Admin_UserState extends State<Admin_User> {
                             },
                             decoration: InputDecoration(
                                 hintText: user?['email'],
+                                hintStyle: GoogleFonts.acme(),
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(8.0)),
@@ -184,32 +183,41 @@ class _Admin_UserState extends State<Admin_User> {
                         ),
                         SizedBox(height: 70),
                         user!['status']==0? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                accept(widget.id);
-                              },
-                              child: Text("Accept"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5)),
+                            SizedBox(
+                              height: 50,
+                              width: 120,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  accept(widget.id);
+                                },
+                                child: Text("Accept"),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                ),
                               ),
                             ),
                             SizedBox(
                               width: 5,
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                rejects(widget.id);
-                              },
-                              child: Text("Reject"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red,
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5)),
+                            SizedBox(
+                              height: 50,
+                              width: 120,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  rejects(widget.id);
+                                },
+                                child: Text("Reject"),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red,
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                ),
                               ),
                             ),
 

@@ -10,6 +10,13 @@ class ADMIN_SIGN extends StatefulWidget {
 }
 
 class _ADMIN_SIGNState extends State<ADMIN_SIGN> {
+  String passwords='';
+  bool showpassword=false;
+  void tooglepassword() {
+    setState(() {
+      showpassword = !showpassword;
+    });
+  }
   var username=TextEditingController();
   var password=TextEditingController();
 final _formkey=GlobalKey<FormState>();
@@ -94,7 +101,8 @@ login(){
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    obscureText: true,
+
+                    obscureText: !showpassword,
                     controller: password,
                     validator: (value) {
                       if (value == null || value.isEmpty) {   // Validation Logic
@@ -103,6 +111,12 @@ login(){
                       return null;
                     },
                     decoration: InputDecoration(
+                      suffixIcon: IconButton(onPressed: (){
+                        tooglepassword();
+
+
+
+                      }, icon: Icon(Icons.remove_red_eye_outlined)),
                       hintText:"Enter Your Password",
                      hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(
@@ -110,6 +124,11 @@ login(){
                       ),
 
                     ),
+                    onChanged: (value) {
+                      setState(() {
+                        passwords = value; // Update the password when input changes
+                      });
+                    },
 
                   ),
                 ),

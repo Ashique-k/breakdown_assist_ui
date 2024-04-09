@@ -12,6 +12,13 @@ class MECH_LOGIN extends StatefulWidget {
 }
 
 class _MECH_LOGINState extends State<MECH_LOGIN> {
+  String passwords='';
+  bool showpassword=false;
+  void tooglepassword() {
+    setState(() {
+      showpassword = !showpassword;
+    });
+  }
   var usernamectrl = TextEditingController();
   var passwordctrl = TextEditingController();
   String id = '';
@@ -94,7 +101,7 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    obscureText: true,
+                    obscureText: !showpassword,
                     controller: passwordctrl,
                     validator: (value) {
                       if (value == null || value.isEmpty) {   // Validation Logic
@@ -103,6 +110,9 @@ class _MECH_LOGINState extends State<MECH_LOGIN> {
                       return null;
                     },
                     decoration: InputDecoration(
+                      suffixIcon: IconButton(onPressed: (){
+                        tooglepassword();
+                      }, icon: Icon(Icons.remove_red_eye_outlined)),
                       hintText:"Enter Your Password",
                       hintStyle: GoogleFonts.acme(),
                       border: OutlineInputBorder(

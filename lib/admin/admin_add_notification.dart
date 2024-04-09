@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 class Admin_add_notification extends StatefulWidget {
@@ -65,22 +66,22 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(height: 30.h,),
               Padding(
                 padding: const EdgeInsets.only(right: 230),
                 child: Text("Enter content",style: GoogleFonts.acme()),
               ),
               SizedBox(
-                height: 10,
+                height: 10.h,
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: SizedBox(
-                  width: 500,
+                  width: 500.w,
 
                   child: Container(
 
-                    width: 250,
+                    width: 250.w,
                     decoration: BoxDecoration(
                       border: Border(
                         left: BorderSide.none
@@ -109,10 +110,10 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                 ),
               ),
               SizedBox(
-                height: 180,
+                height: 180.h,
               ),
               SizedBox(
-                  width: 250,
+                  width: 250.w,
                   child: ElevatedButton(onPressed: (){
                     submit();
                     ScaffoldMessenger.of(context).showSnackBar(_bar);

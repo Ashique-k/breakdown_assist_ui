@@ -14,6 +14,14 @@ class USER_LOGIN extends StatefulWidget {
 }
 
 class _USER_LOGINState extends State<USER_LOGIN> {
+  String passwords='';
+  bool showpassword=false;
+  void tooglepassword() {
+    setState(() {
+      showpassword = !showpassword;
+    });
+  }
+
   var usernamectrl = TextEditingController();
   var passwordctrl = TextEditingController();
   final _formkey = GlobalKey<FormState>();
@@ -94,7 +102,7 @@ class _USER_LOGINState extends State<USER_LOGIN> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  obscureText: true,
+                  obscureText:!showpassword,
                   controller: passwordctrl,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -104,6 +112,9 @@ class _USER_LOGINState extends State<USER_LOGIN> {
                     return null;
                   },
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(onPressed: (){
+                      tooglepassword();
+                    }, icon: Icon(Icons.remove_red_eye_outlined)),
                     hintText: "Password",
                     hintStyle: GoogleFonts.acme(),
                     border: OutlineInputBorder(
@@ -114,7 +125,14 @@ class _USER_LOGINState extends State<USER_LOGIN> {
               SizedBox(
                 height: 5,
               ),
-              TextButton(onPressed: () {}, child: Text("Forgetten Password?",style: GoogleFonts.acme(),)),
+              TextButton(onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => USER_LOGIN()),
+                );
+
+
+              }, child: Text("Forgetten Password?",style: GoogleFonts.acme(),)),
               SizedBox(
                 height: 10,
               ),

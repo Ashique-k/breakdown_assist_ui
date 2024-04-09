@@ -69,10 +69,14 @@ class _Admin_mechState extends State<Admin_mech> {
                         SizedBox(
                           height: 50,
                         ),
+                        mech?['path']==''?
                         CircleAvatar(
-                          radius: 60,
-                          backgroundImage:
-                              ExactAssetImage("assets/images/men.png"),
+                          radius: 40,
+                          backgroundImage: ExactAssetImage("assets/images/person.png"),
+                        ):
+                        CircleAvatar(
+                          radius: 40,
+                          backgroundImage: NetworkImage(mech?['path']),
                         ),
                         SizedBox(
                           height: 30,
@@ -219,7 +223,7 @@ class _Admin_mechState extends State<Admin_mech> {
                           children: [
                             SizedBox(
                               height: 50,
-                              width: 250,
+                              width: 200,
                               child: ElevatedButton(
                                 onPressed: () {
                                   accept(widget.id);
@@ -238,7 +242,7 @@ class _Admin_mechState extends State<Admin_mech> {
                             ),
                             SizedBox(
                               height: 50,
-                              width: 250,
+                              width: 100,
                               child: ElevatedButton(
                                 onPressed: () {
                                   rejects(widget.id);
@@ -255,10 +259,13 @@ class _Admin_mechState extends State<Admin_mech> {
                           ]
                         ):mech!['status']==1?
                         SizedBox(
-                          height: 20,
-                          width: 150,
+                          height: 50,
+                          width: 200,
                           child: ElevatedButton(onPressed: (){}, child: Text("Accepted"),
                             style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)
+                              ),
                               backgroundColor: Colors.green,
                               foregroundColor: Colors.white,
                             ),
@@ -266,7 +273,7 @@ class _Admin_mechState extends State<Admin_mech> {
 
                         ):SizedBox(
                           height: 50,
-                          width: 200,
+                          width: 100,
                           child: ElevatedButton(onPressed: (){}, child: Text("Rejected"),
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(

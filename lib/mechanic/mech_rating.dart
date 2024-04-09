@@ -52,7 +52,7 @@ class _MECH_RATINGState extends State<MECH_RATING> {
                 height: 900,
                 width: 450,
                 child: FutureBuilder(
-    future: FirebaseFirestore.instance.collection("Mechreq").where('mechid',isEqualTo: ID).get(),
+    future: FirebaseFirestore.instance.collection("Mechreq").where('mechid',isEqualTo: ID).where('final',isEqualTo: 1).get(),
     builder: (context,AsyncSnapshot<QuerySnapshot>snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) {
         return Center(
